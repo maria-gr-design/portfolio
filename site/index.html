@@ -3,828 +3,319 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maria Gratsia — Senior Designer & Illustrator</title>
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #F8F8F8;
-      --text: #141414;
-      --text-secondary: #555;
-      --text-tertiary: #999;
-      --accent: #4338CA;
-      --border: #E0E0E0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-weight: 400;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ——— Navigation ——— */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 48px;
-      background: rgba(248, 248, 248, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .nav-name {
-      font-family: 'Clash Display', system-ui, sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      font-size: 13px;
-      font-weight: 400;
-    }
-
-    .nav-link {
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .nav-link:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    /* ——— Hero ——— */
-    .hero {
-      padding: 130px 48px 48px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .hero-intro {
-      font-size: clamp(28px, 3.6vw, 44px);
-      font-weight: 400;
-      line-height: 1.35;
-      max-width: 720px;
-      color: var(--text);
-    }
-
-    /* ——— Selected Work ——— */
-    .work {
-      padding: 64px 48px 80px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Clash Display', system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 24px;
-    }
-
-    .project-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .project-row {
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .project-header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      padding: 28px 0;
-      gap: 24px;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .project-title {
-      font-family: 'Clash Display', system-ui, sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      transition: color 0.3s ease;
-    }
-
-    .project-row:hover .project-title {
-      color: var(--accent);
-    }
-
-    .project-cats {
-      font-size: 14px;
-      color: var(--text-tertiary);
-      white-space: nowrap;
-    }
-
-    /* Expand: header hides, preview shows */
-    .project-row.expanded .project-header {
-      padding: 0;
-      height: 0;
-      overflow: hidden;
-      opacity: 0;
-    }
-
-    .project-preview {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  opacity 0.3s ease;
-      opacity: 0;
-    }
-
-    .project-row.expanded .project-preview {
-      max-height: 560px;
-      opacity: 1;
-    }
-
-    /* Instant collapse — no animation when closing */
-    .project-row.collapsing .project-header {
-      transition: none;
-    }
-    .project-row.collapsing .project-preview {
-      transition: none;
-    }
-
-    .project-preview-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 460px;
-      overflow: hidden;
-    }
-
-    .project-preview-img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .project-preview-img img,
-    .project-preview-img .ph {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Right panel — cats pinned to top at same y as header */
-    .project-preview-text {
-      padding: 0 48px 40px 48px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-preview-cats {
-      font-size: 14px;
-      color: var(--text-tertiary);
-      padding-top: 28px;
-      margin-bottom: 24px;
-    }
-
-    .project-preview-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-preview-title {
-      font-family: 'Clash Display', system-ui, sans-serif;
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-
-    .project-preview-desc {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text);
-      max-width: 400px;
-    }
-
-    .project-preview-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      transition: gap 0.3s ease;
-    }
-
-    .project-preview-link svg {
-      width: 24px;
-      height: 12px;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-
-    .project-preview-link:hover svg {
-      transform: translateX(4px);
-    }
-
-    /* ——— Gallery — collapsible ——— */
-    .gallery {
-      padding: 0 48px 60px;
-      overflow: hidden;
-      position: relative;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .gallery-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .gallery-label {
-      font-family: 'Clash Display', system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin: 0;
-    }
-
-    .gallery-toggle {
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-tertiary);
-      transition: transform 0.3s ease, color 0.2s ease;
-    }
-
-    .gallery-header:hover .gallery-toggle { color: var(--accent); }
-    .gallery-header:hover .gallery-label { color: var(--accent); }
-
-    .gallery-toggle.open {
-      transform: rotate(45deg);
-    }
-
-    .gallery-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  opacity 0.4s ease;
-      opacity: 0;
-    }
-
-    .gallery-body.open {
-      max-height: 600px;
-      opacity: 1;
-      margin-top: 24px;
-    }
-
-    .gallery-container {
-      position: relative;
-    }
-
-    .gallery-scroll {
-      overflow-x: auto;
-      overflow-y: visible;
-      cursor: grab;
-      padding: 40px 0;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .gallery-scroll::-webkit-scrollbar { display: none; }
-    .gallery-scroll:active { cursor: grabbing; }
-
-    .gallery-wall {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: max-content;
-      padding: 40px 0;
-    }
-
-    .gallery-item {
-      flex-shrink: 0;
-      background: #E8E8E8;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .gallery-item:hover { transform: scale(1.02); }
-
-    .gi-1  { width: 220px; height: 170px; margin-top: -30px; }
-    .gi-2  { width: 280px; height: 240px; margin-top: 40px; }
-    .gi-3  { width: 160px; height: 200px; margin-top: -50px; }
-    .gi-4  { width: 300px; height: 180px; margin-top: 20px; }
-    .gi-5  { width: 200px; height: 260px; margin-top: -40px; }
-    .gi-6  { width: 240px; height: 160px; margin-top: 50px; }
-    .gi-7  { width: 180px; height: 220px; margin-top: -20px; }
-    .gi-8  { width: 260px; height: 190px; margin-top: 30px; }
-    .gi-9  { width: 190px; height: 250px; margin-top: -45px; }
-    .gi-10 { width: 250px; height: 170px; margin-top: 35px; }
-
-    .gallery-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-      color: var(--text);
-      opacity: 0.25;
-      transition: opacity 0.2s ease, color 0.2s ease;
-    }
-
-    .gallery-arrow:hover {
-      opacity: 0.8;
-      color: var(--accent);
-    }
-
-    .gallery-arrow svg {
-      width: 48px;
-      height: 24px;
-    }
-
-    .gallery-arrow--left { left: 8px; }
-    .gallery-arrow--right { right: 8px; }
-
-    /* ——— Footer ——— */
-    .footer {
-      padding: 48px 48px 72px;
-      max-width: 1400px;
-      margin: 0 auto;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .footer-links-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
-    }
-
-    .footer-link {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.3s ease;
-    }
-
-    .footer-link:hover { color: var(--accent); }
-
-    .footer-link .arrow {
-      font-size: 13px;
-      transition: transform 0.3s ease;
-    }
-
-    .footer-link:hover .arrow {
-      transform: translate(2px, -2px);
-    }
-
-    /* ——— Animations ——— */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fadeIn 0.7s ease-out forwards;
-    }
-
-    .fade-in-delay-1 { animation-delay: 0.15s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .ph { background: #E8E8E8; }
-
-    /* ——— Responsive ——— */
-
-    /* Tablet */
-    @media (max-width: 900px) {
-      .nav { padding: 20px 32px; }
-      .hero { padding: 110px 32px 40px; }
-      .work { padding: 48px 32px 60px; }
-      .gallery { padding: 0 32px 60px; }
-      .gallery-scroll { padding: 32px 0; }
-      .footer { padding: 40px 32px 60px; }
-
-      .project-preview-inner {
-        grid-template-columns: 1fr 1fr;
-        height: 400px;
-      }
-
-      .project-preview-text {
-        padding: 0 32px 32px 32px;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 640px) {
-      .nav { padding: 16px 20px; }
-      .nav-name { font-size: 17px; }
-      .nav-links { gap: 20px; font-size: 12px; }
-
-      .hero { padding: 90px 20px 32px; }
-      .hero-intro { font-size: clamp(22px, 6vw, 32px); max-width: 100%; }
-
-      .work { padding: 40px 20px 48px; }
-      .section-label { margin-bottom: 16px; }
-
-      .project-header {
-        padding: 20px 0;
-        gap: 4px;
-        grid-template-columns: 1fr;
-      }
-      .project-title { font-size: clamp(22px, 6vw, 32px); }
-      .project-cats { font-size: 12px; }
-
-      /* Mobile expanded: taller max-height for stacked layout */
-      .project-row.expanded .project-preview {
-        max-height: 800px;
-      }
-
-      .project-preview-inner {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .project-preview-img {
-        height: 240px;
-      }
-
-      .project-preview-text {
-        padding: 20px 20px 28px;
-      }
-
-      .project-preview-text {
-        display: grid;
-        grid-template-areas:
-          "title"
-          "cats"
-          "desc"
-          "link";
-        grid-template-columns: 1fr;
-      }
-
-      .project-preview-cats {
-        grid-area: cats;
-        padding-top: 0;
-        margin-bottom: 0;
-        font-size: 11px;
-        letter-spacing: 0.06em;
-      }
-
-      .project-preview-content {
-        display: contents;
-      }
-
-      .project-preview-title {
-        grid-area: title;
-        font-size: clamp(22px, 6vw, 32px);
-        margin-bottom: 4px;
-      }
-
-      .project-preview-desc {
-        grid-area: desc;
-        font-size: 14px;
-        max-width: 100%;
-        margin-top: 12px;
-      }
-
-      .project-preview-link {
-        grid-area: link;
-        margin-top: 16px;
-      }
-
-      /* Gallery */
-      .gallery { padding: 0 20px 48px; }
-      .gallery-scroll { padding: 24px 0; }
-      .gallery-body.open { max-height: 500px; }
-      .gallery-wall { gap: 8px; padding: 24px 0; }
-
-      .gi-1  { width: 160px; height: 120px; }
-      .gi-2  { width: 200px; height: 170px; }
-      .gi-3  { width: 120px; height: 150px; }
-      .gi-4  { width: 220px; height: 130px; }
-      .gi-5  { width: 150px; height: 190px; }
-      .gi-6  { width: 180px; height: 120px; }
-      .gi-7  { width: 130px; height: 160px; }
-      .gi-8  { width: 190px; height: 140px; }
-      .gi-9  { width: 140px; height: 180px; }
-      .gi-10 { width: 180px; height: 120px; }
-
-      .gallery-arrow { width: 40px; height: 40px; }
-      .gallery-arrow svg { width: 32px; height: 16px; }
-
-      /* Footer */
-      .footer {
-        justify-content: flex-start;
-        padding: 32px 20px 48px;
-      }
-      .footer-links-col { align-items: flex-start; }
-      .footer-link { font-size: 14px; }
-    }
-  </style>
+  <title>Maria Gratsia — Senior Designer</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <link href="assets/styles.css" rel="stylesheet">
 </head>
 <body>
+
+  <a class="skip-link" href="#work">Skip to content</a>
 
   <nav class="nav">
     <a href="#" class="nav-name">Maria Gratsia</a>
     <div class="nav-links">
       <a href="#work" class="nav-link">Work</a>
-      <a href="#about" class="nav-link">About</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="#contact" class="nav-link">Contact</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <p class="hero-intro fade-in">
-      I bring ownership, curiosity, and care for design that's usable and meaningful. AI is part of my process to explore, elevate, and deliver creative work.
-    </p>
-  </section>
+  <main>
+  <div class="intro-wrap">
+    <section class="hero" id="hero">
+      <h1 class="hero-tagline fade-in">Design and illustration<br>across brand and product.</h1>
+      <p class="hero-sub fade-in fade-in-delay" id="heroSub">Actively exploring AI as part of the creative process</p>
+    </section>
+  </div>
 
   <section class="work" id="work">
-    <p class="section-label">Selected Work</p>
-    <div class="project-list">
 
-      <div class="project-row">
-        <div class="project-header">
-          <span class="project-title">Desir</span>
-          <span class="project-cats">Creative Direction · Campaign · AI</span>
-        </div>
-        <div class="project-preview">
-          <div class="project-preview-inner">
-            <div class="project-preview-img">
-              <img src="assets/images/desir-hero.png" alt="DESIR Campaign">
-            </div>
-            <div class="project-preview-text">
-              <span class="project-preview-cats">Creative Direction · Campaign · AI</span>
-              <div class="project-preview-content">
-                <h3 class="project-preview-title">Desir</h3>
-                <p class="project-preview-desc">A fragrance brand built from scratch. Bottle concept, campaign visuals, and art direction. All imagery generated with Adobe Firefly through iterative prompting.</p>
-                <a href="#" class="project-preview-link">View project <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="15,1 20,6 15,11"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <p class="section-label">Selected work</p>
 
-      <div class="project-row">
-        <div class="project-header">
-          <span class="project-title">Farm Sanctuary</span>
-          <span class="project-cats">Illustration · Education</span>
+    <article class="project">
+      <a href="projects/american-greetings.html" class="project-link">
+        <div class="project-cover">
+          <img src="assets/images/ag-cover.png" alt="American Greetings badges" width="1600" height="1200">
         </div>
-        <div class="project-preview">
-          <div class="project-preview-inner">
-            <div class="project-preview-img"><div class="ph"></div></div>
-            <div class="project-preview-text">
-              <span class="project-preview-cats">Illustration · Education</span>
-              <div class="project-preview-content">
-                <h3 class="project-preview-title">Farm Sanctuary</h3>
-                <p class="project-preview-desc">Visual system for a K-12 humane education curriculum. Reached over 250,000 students. 2019 Excellence Award.</p>
-                <a href="#" class="project-preview-link">View project <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="15,1 20,6 15,11"/></svg></a>
-              </div>
-            </div>
-          </div>
+        <div class="project-text">
+          <span class="project-cats">Art Direction · Illustration · Visual System</span>
+          <h2 class="project-title">American Greetings</h2>
+          <p class="project-desc">Badge system for American Greetings' membership platform. 30 achievements designed to scale across categories and UI contexts.</p>
+          <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
         </div>
-      </div>
+      </a>
+    </article>
 
-      <div class="project-row">
-        <div class="project-header">
-          <span class="project-title">American Greetings</span>
-          <span class="project-cats">Art Direction · System</span>
+    <article class="project">
+      <a href="projects/farm-sanctuary.html" class="project-link">
+        <div class="project-cover">
+          <img src="assets/images/fs-cover-3.png" alt="Farm Sanctuary education visuals" width="3334" height="2500" loading="lazy">
         </div>
-        <div class="project-preview">
-          <div class="project-preview-inner">
-            <div class="project-preview-img"><img src="assets/images/ag-hero.png" alt="American Greetings Badges"></div>
-            <div class="project-preview-text">
-              <span class="project-preview-cats">Art Direction · System</span>
-              <div class="project-preview-content">
-                <h3 class="project-preview-title">American Greetings</h3>
-                <p class="project-preview-desc">30 gamification badges for a membership platform. Full process from sketch to final, within an existing brand system.</p>
-                <a href="#" class="project-preview-link">View project <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="15,1 20,6 15,11"/></svg></a>
-              </div>
-            </div>
-          </div>
+        <div class="project-text">
+          <span class="project-cats">Education · Visual System · Infographics</span>
+          <h2 class="project-title">Farm Sanctuary</h2>
+          <p class="project-desc">Visual system spanning the full K-12 range for a Humane Education program, reaching 250,000+ students across the U.S.</p>
+          <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
         </div>
-      </div>
+      </a>
+    </article>
 
-      <div class="project-row">
-        <div class="project-header">
-          <span class="project-title">Ruby Labs</span>
-          <span class="project-cats">Product · Illustration</span>
+    <article class="project">
+      <a href="#" class="project-link">
+        <div class="project-cover">
         </div>
-        <div class="project-preview">
-          <div class="project-preview-inner">
-            <div class="project-preview-img"><div class="ph"></div></div>
-            <div class="project-preview-text">
-              <span class="project-preview-cats">Product · Illustration</span>
-              <div class="project-preview-content">
-                <h3 class="project-preview-title">Ruby Labs</h3>
-                <p class="project-preview-desc">Onboarding experience for a wellness app. A/B tested across variants, rated higher for warmth and early engagement.</p>
-                <a href="#" class="project-preview-link">View project <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="15,1 20,6 15,11"/></svg></a>
-              </div>
-            </div>
-          </div>
+        <div class="project-text">
+          <span class="project-cats">Product · Illustration · Visual System</span>
+          <h2 class="project-title">Able</h2>
+          <p class="project-desc">Two illustrated directions for onboarding for a health & wellness product tested against real users. The selected style shipped in onboarding for a wellness app.</p>
+          <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
         </div>
-      </div>
+      </a>
+    </article>
 
-      <div class="project-row">
-        <div class="project-header">
-          <span class="project-title">impact.com</span>
-          <span class="project-cats">Brand · Data Viz</span>
+    <article class="project">
+      <a href="#" class="project-link">
+        <div class="project-cover">
         </div>
-        <div class="project-preview">
-          <div class="project-preview-inner">
-            <div class="project-preview-img"><div class="ph"></div></div>
-            <div class="project-preview-text">
-              <span class="project-preview-cats">Brand · Data Viz</span>
-              <div class="project-preview-content">
-                <h3 class="project-preview-title">impact.com</h3>
-                <p class="project-preview-desc">Campaign assets and marketing reports for a partnerships platform. Infographics, digital ads, and data visualizations within an established system.</p>
-                <a href="#" class="project-preview-link">View project <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="15,1 20,6 15,11"/></svg></a>
-              </div>
-            </div>
-          </div>
+        <div class="project-text">
+          <span class="project-cats">Brand · Marketing · Data Visualisation</span>
+          <h2 class="project-title">impact.com</h2>
+          <p class="project-desc">Reports, infographics, and campaign materials for a partnerships management platform. Complex data made visual within an established brand system.</p>
+          <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
         </div>
-      </div>
+      </a>
+    </article>
 
-    </div>
+    <article class="project">
+      <a href="#" class="project-link">
+        <div class="project-cover">
+        </div>
+        <div class="project-text">
+          <span class="project-cats">Product Design · UX · Prototype</span>
+          <h2 class="project-title">Gymly</h2>
+          <p class="project-desc">Member experience for a gym platform, focused on reducing drop-off through better onboarding and engagement.</p>
+          <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
+        </div>
+      </a>
+    </article>
+
   </section>
 
-  <section class="gallery">
-    <div class="gallery-header" id="galleryToggle">
-      <p class="gallery-label">More Work</p>
-      <span class="gallery-toggle" id="galleryIcon">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-      </span>
-    </div>
-    <div class="gallery-body" id="galleryBody">
-    <div class="gallery-container">
-      <button class="gallery-arrow gallery-arrow--left" id="galLeft"><svg viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="48" y1="12" x2="4" y2="12"/><polyline points="12,4 4,12 12,20"/></svg></button>
-      <button class="gallery-arrow gallery-arrow--right" id="galRight"><svg viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="0" y1="12" x2="44" y2="12"/><polyline points="36,4 44,12 36,20"/></svg></button>
-      <div class="gallery-scroll" id="galleryScroll">
-        <div class="gallery-wall">
-          <div class="gallery-item gi-1"></div>
-          <div class="gallery-item gi-2"></div>
-          <div class="gallery-item gi-3"></div>
-          <div class="gallery-item gi-4"></div>
-          <div class="gallery-item gi-5"></div>
-          <div class="gallery-item gi-6"></div>
-          <div class="gallery-item gi-7"></div>
-          <div class="gallery-item gi-8"></div>
-          <div class="gallery-item gi-9"></div>
-          <div class="gallery-item gi-10"></div>
-        </div>
+  <div class="explorations-wrap">
+    <section class="work" id="explorations">
+
+      <p class="section-label">AI Explorations</p>
+
+      <div class="explorations-grid">
+        <article class="project">
+          <a href="projects/desir.html" class="project-link">
+            <div class="project-cover">
+              <img src="assets/images/desir-cover.png" alt="Desir fragrance campaign" width="2400" height="1792" loading="lazy">
+            </div>
+            <div class="project-text">
+              <span class="project-cats">Creative Direction · AI Imagery</span>
+              <h2 class="project-title">Desir</h2>
+              <p class="project-desc">Campaign imagery for a fragrance concept, art-directed and produced entirely using AI generative tools.</p>
+              <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="project">
+          <a href="#" class="project-link">
+            <div class="project-cover">
+            </div>
+            <div class="project-text">
+              <span class="project-cats">Product Design · AI-assisted Development</span>
+              <h2 class="project-title">Pressio</h2>
+              <p class="project-desc">Blood pressure tracking app designed for older adults. Built with AI-assisted development, focused on accessibility and simplicity. In progress.</p>
+              <span class="project-cta"><span class="project-cta-label">View project</span> <svg viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="4" x2="24" y2="4"/><polyline points="20,1 24,4 20,7"/></svg></span>
+            </div>
+          </a>
+        </article>
+
+        <article class="project">
+          <a href="#" class="project-link">
+            <div class="project-cover">
+            </div>
+            <div class="project-text">
+              <span class="project-cats">Brand · AI Imagery</span>
+              <h2 class="project-title">Neurochic</h2>
+              <p class="project-desc">Coming soon.</p>
+            </div>
+          </a>
+        </article>
       </div>
-    </div>
-    </div>
-  </section>
+
+      <div class="explorations-nav" id="expNav">
+        <button id="expPrev" aria-label="Previous project">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
+        </button>
+        <span class="explorations-counter" id="expCounter">1 / 3</span>
+        <button id="expNext" aria-label="Next project">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
+        </button>
+      </div>
+
+    </section>
+  </div>
+  </main>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="7" y1="12" x2="7" y2="2"/>
+      <polyline points="2,7 7,2 12,7"/>
+    </svg>
+  </button>
 
   <footer class="footer" id="contact">
-    <div class="footer-links-col">
-      <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
-        maria.gratsia@gmail.com <span class="arrow">↗</span>
-      </a>
-      <a href="https://linkedin.com/in/mariagratsia" target="_blank" class="footer-link">
-        LinkedIn <span class="arrow">↗</span>
-      </a>
+    <div class="footer-inner">
+      <span class="footer-label">Contact</span>
+      <div class="footer-bottom">
+        <span class="footer-location">Based in Greece. Working remotely.</span>
+        <div class="footer-links-col">
+          <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
+            Email me <span class="arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
+            LinkedIn <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- Cursor tooltips -->
+  <div class="cursor-tip" id="nameTip">Hi 👋</div>
+  <div class="cursor-tip" id="heroTip">View work</div>
+  <div class="cursor-tip" id="explorationsTip">View explorations</div>
+
   <script>
-    // Edge-hover scrolling
-    const gallery = document.getElementById('galleryScroll');
-    let scrollSpeed = 0;
-    function tick() {
-      if (scrollSpeed !== 0) gallery.scrollLeft += scrollSpeed;
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    gallery.addEventListener('mousemove', (e) => {
-      const rect = gallery.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const w = rect.width;
-      const zone = 150;
-      if (x < zone) scrollSpeed = -4 * (1 - x / zone);
-      else if (x > w - zone) scrollSpeed = 4 * (1 - (w - x) / zone);
-      else scrollSpeed = 0;
-    });
-    gallery.addEventListener('mouseleave', () => { scrollSpeed = 0; });
-
-    // Arrow buttons
-    document.getElementById('galLeft').addEventListener('click', () => {
-      gallery.scrollBy({ left: -400, behavior: 'smooth' });
-    });
-    document.getElementById('galRight').addEventListener('click', () => {
-      gallery.scrollBy({ left: 400, behavior: 'smooth' });
-    });
-
-    // Drag scroll
-    let dragging = false, startX, startScroll;
-    gallery.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.gallery-arrow')) return;
-      dragging = true; startX = e.pageX; startScroll = gallery.scrollLeft;
-    });
-    gallery.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      e.preventDefault();
-      gallery.scrollLeft = startScroll - (e.pageX - startX);
-    });
-    document.addEventListener('mouseup', () => { dragging = false; });
-
-    // Project expand — hover (desktop) / tap (mobile)
-    const rows = document.querySelectorAll('.project-row');
-    const projectList = document.querySelector('.project-list');
-    let closeTimer = null;
-
-    function expandRow(row) {
-      rows.forEach(r => { if (r !== row) r.classList.remove('expanded'); });
-      row.classList.add('expanded');
-    }
-
-    function collapseAll() {
-      rows.forEach(r => r.classList.remove('expanded'));
-    }
-
-    rows.forEach(row => {
-      // Desktop: mouseenter expands immediately, no per-row mouseleave
-      row.addEventListener('mouseenter', () => {
-        if (window.innerWidth <= 640) return;
-        clearTimeout(closeTimer);
-        expandRow(row);
+    // ——— Go to top ———
+    (function() {
+      var btn = document.getElementById('toTop');
+      if (!btn) return;
+      var onScroll = function() {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+    })();
 
-      // Mobile: tap
-      row.addEventListener('click', () => {
-        if (window.innerWidth > 640) return;
-        const wasExpanded = row.classList.contains('expanded');
-        collapseAll();
-        if (!wasExpanded) expandRow(row);
+    // ——— Explorations mobile slideshow ———
+    (function() {
+      var nav = document.getElementById('expNav');
+      if (!nav) return;
+      var grid = document.querySelector('.explorations-grid');
+      var projects = Array.from(grid.querySelectorAll('.project'));
+      var counter = document.getElementById('expCounter');
+      var total = projects.length;
+      var current = 0;
+
+      function isMobile() { return window.innerWidth <= 640; }
+
+      function showProject(i) {
+        current = Math.max(0, Math.min(i, total - 1));
+        projects.forEach(function(p, idx) {
+          p.classList.toggle('exp-active', idx === current);
+        });
+        counter.textContent = (current + 1) + ' / ' + total;
+      }
+
+      // Initialize: show first on mobile
+      function init() {
+        if (isMobile()) {
+          showProject(0);
+        } else {
+          // Desktop: show all, remove exp-active class
+          projects.forEach(function(p) { p.classList.remove('exp-active'); });
+        }
+      }
+
+      init();
+      window.addEventListener('resize', init);
+
+      document.getElementById('expPrev').addEventListener('click', function() { showProject(current - 1); });
+      document.getElementById('expNext').addEventListener('click', function() { showProject(current + 1); });
+    })();
+
+    // ——— Name tooltip ———
+    (function() {
+      var name = document.querySelector('.nav-name');
+      var tip = document.getElementById('nameTip');
+      if (!name || !tip) return;
+      name.addEventListener('mousemove', function(e) {
+        tip.style.left = (e.clientX + 16) + 'px';
+        tip.style.top = (e.clientY + 16) + 'px';
+        tip.classList.add('visible');
       });
-    });
+      name.addEventListener('mouseleave', function() { tip.classList.remove('visible'); });
+    })();
 
-    // Only collapse when cursor leaves the entire project list
-    let userHasInteracted = false;
+    // ——— Hero tooltip + scroll on click ———
+    (function() {
+      var hero = document.querySelector('.intro-wrap');
+      var tagline = document.querySelector('.hero-tagline');
+      var tip = document.getElementById('heroTip');
+      var work = document.getElementById('work');
+      if (!hero || !tagline || !tip || !work) return;
+      hero.style.cursor = 'pointer';
+      tagline.addEventListener('mousemove', function(e) {
+        e.stopPropagation();
+        tip.style.left = (e.clientX + 16) + 'px';
+        tip.style.top = (e.clientY + 16) + 'px';
+        tip.classList.add('visible');
+      });
+      tagline.addEventListener('mouseleave', function() { tip.classList.remove('visible'); });
+      hero.addEventListener('click', function() {
+        work.scrollIntoView({ behavior: 'smooth' });
+      });
+    })();
 
-    projectList.addEventListener('mouseleave', () => {
-      if (window.innerWidth <= 640) return;
-      if (!userHasInteracted) return;
-      closeTimer = setTimeout(collapseAll, 200);
-    });
+    // ——— Hero sub tooltip + scroll to explorations ———
+    (function() {
+      var sub = document.getElementById('heroSub');
+      var tip = document.getElementById('explorationsTip');
+      var heroTip = document.getElementById('heroTip');
+      var explorations = document.getElementById('explorations');
+      if (!sub || !tip || !explorations) return;
+      sub.addEventListener('mousemove', function(e) {
+        e.stopPropagation();
+        tip.style.left = (e.clientX + 16) + 'px';
+        tip.style.top = (e.clientY + 16) + 'px';
+        tip.classList.add('visible');
+        if (heroTip) heroTip.classList.remove('visible');
+      });
+      sub.addEventListener('mouseleave', function() { tip.classList.remove('visible'); });
+      sub.addEventListener('click', function(e) {
+        e.stopPropagation();
+        explorations.scrollIntoView({ behavior: 'smooth' });
+      });
+    })();
 
-    projectList.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      userHasInteracted = true;
-    });
+    // ——— Scroll-driven project reveal ———
+    (function() {
+      var projects = document.querySelectorAll('.project');
+      if (!projects.length || !('IntersectionObserver' in window)) {
+        // Fallback: show all immediately
+        projects.forEach(function(p) { p.classList.add('revealed'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      projects.forEach(function(p) { observer.observe(p); });
+    })();
 
-    // Auto-expand first project on load
-    setTimeout(() => {
-      expandRow(rows[0]);
-    }, 600);
-
-    // Gallery toggle
-    const galleryToggle = document.getElementById('galleryToggle');
-    const galleryBody = document.getElementById('galleryBody');
-    const galleryIcon = document.getElementById('galleryIcon');
-    galleryToggle.addEventListener('click', () => {
-      galleryBody.classList.toggle('open');
-      galleryIcon.classList.toggle('open');
-    });
   </script>
 
 </body>

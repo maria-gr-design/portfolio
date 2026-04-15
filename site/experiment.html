@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Gratsia — Experiment Layout</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F6F5F0;
+      --text: #0E0E0E;
+      --text-secondary: #4A4A4A;
+      --text-tertiary: #8A8A8A;
+      --line: #D8D6CF;
+      --accent: #4338CA;
+      --font: 'Satoshi', -apple-system, system-ui, sans-serif;
+      --serif: 'Sentient', Georgia, serif;
+      --left-w: 38%;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      height: 100%;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ——— Two-panel layout ——— */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ——— Left identity panel ——— */
+    .panel-left {
+      width: var(--left-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 48px 48px 52px;
+      overflow: hidden;
+    }
+
+    .identity-top { flex: 1; display: flex; flex-direction: column; }
+
+    .identity-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: auto;
+      padding-bottom: 56px;
+    }
+
+    .identity-nav-name {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text-secondary);
+    }
+
+    .identity-nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .identity-nav-link {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      transition: color 0.2s ease;
+    }
+
+    .identity-nav-link:hover { color: var(--text); }
+
+    .identity-main { margin-top: auto; }
+
+    .identity-title {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4.2vw, 54px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .identity-title em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .identity-tagline {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 300px;
+      margin-bottom: 36px;
+    }
+
+    .identity-disciplines {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .disc-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      border: 1px solid var(--line);
+      padding: 5px 11px;
+      border-radius: 20px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .disc-tag:hover {
+      color: var(--text-secondary);
+      border-color: var(--text-tertiary);
+    }
+
+    .identity-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .identity-location {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+
+    .identity-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .identity-contact-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .identity-contact-link:hover { color: var(--accent); }
+
+    .identity-contact-link .arrow {
+      font-size: 11px;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .identity-contact-link:hover .arrow { transform: translate(2px, -2px); }
+
+    /* ——— Right panel ——— */
+    .panel-right {
+      flex: 1;
+      min-width: 0;
+      overflow-y: auto;
+    }
+
+    /* ——— Section header row ——— */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 52px 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+    }
+
+    .section-header:not(:first-child) {
+      margin-top: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label-text {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .section-count {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--text-tertiary);
+    }
+
+    /* ——— Project row list ——— */
+    .project-list { display: block; }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 0;
+      padding: 0 52px;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      min-height: 96px;
+    }
+
+    .project-row:hover { background: #EFEDE6; }
+
+    .project-row-index {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      padding: 24px 0;
+      align-self: flex-start;
+      padding-top: 30px;
+    }
+
+    .project-row-body {
+      padding: 26px 20px 26px 0;
+    }
+
+    .project-row-title {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .project-row:hover .project-row-title { color: var(--accent); }
+
+    .project-row-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .project-row-cats {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    .project-row-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(67, 56, 202, 0.08);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .project-row-arrow {
+      font-size: 16px;
+      color: var(--line);
+      transition: color 0.2s ease, transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .project-row:hover .project-row-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* ——— Exploration rows (darker bg) ——— */
+    .section-explorations .project-row {
+      background: transparent;
+    }
+
+    .section-explorations .project-row:hover {
+      background: #1A1A1A;
+    }
+
+    .section-explorations-wrap {
+      background: #141414;
+    }
+
+    .section-explorations-wrap .section-header {
+      background: #141414;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .section-explorations-wrap .section-label-text,
+    .section-explorations-wrap .section-count {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .section-explorations-wrap .project-row {
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .section-explorations-wrap .project-row:hover {
+      background: #1E1E1E;
+    }
+
+    .section-explorations-wrap .project-row-index {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .section-explorations-wrap .project-row-title {
+      color: #E0E0E0;
+    }
+
+    .section-explorations-wrap .project-row:hover .project-row-title {
+      color: #fff;
+    }
+
+    .section-explorations-wrap .project-row-cats {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .section-explorations-wrap .project-row-arrow {
+      color: rgba(255,255,255,0.1);
+    }
+
+    .section-explorations-wrap .project-row:hover .project-row-arrow {
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ——— Footer strip ——— */
+    .panel-right-footer {
+      padding: 24px 52px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-right-footer-note {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .panel-right-footer-year {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ——— Hover preview image (cursor follower) ——— */
+    .preview-ghost {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      will-change: transform;
+    }
+
+    .preview-ghost.visible { opacity: 1; }
+
+    .preview-ghost-inner {
+      width: 320px;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      transform: translate(-50%, -60%);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .preview-ghost-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-ghost-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      margin-top: 10px;
+      text-align: center;
+      transform: translate(-50%, 0);
+      padding-left: 50%;
+    }
+
+    /* ——— In-progress badge ——— */
+    .badge-wip {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      border: 1px solid var(--line);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    /* ——— Responsive ——— */
+    @media (max-width: 900px) {
+      :root { --left-w: 44%; }
+
+      .panel-left {
+        padding: 36px 32px 36px 36px;
+      }
+
+      .identity-title {
+        font-size: clamp(32px, 5.5vw, 46px);
+      }
+
+      .project-row {
+        padding: 0 32px;
+      }
+
+      .section-header {
+        padding: 28px 32px 14px;
+      }
+
+      .panel-right-footer {
+        padding: 20px 32px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .layout { flex-direction: column; }
+
+      .panel-left {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 32px 24px 28px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .identity-nav { padding-bottom: 32px; }
+      .identity-main { margin-top: 0; }
+
+      .identity-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 20px; }
+
+      .identity-tagline { margin-bottom: 24px; font-size: 14px; }
+
+      .identity-disciplines { margin-bottom: 28px; }
+
+      .identity-bottom { padding-top: 20px; }
+
+      .preview-ghost { display: none; }
+
+      .project-row {
+        padding: 0 24px;
+        min-height: 80px;
+      }
+
+      .section-header {
+        padding: 24px 24px 12px;
+      }
+
+      .project-row-title { font-size: 20px; }
+
+      .panel-right-footer { padding: 18px 24px; }
+    }
+
+    /* ——— Reduced motion ——— */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+      .preview-ghost { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ghost image that follows cursor on project hover -->
+  <div class="preview-ghost" id="previewGhost" aria-hidden="true">
+    <div class="preview-ghost-inner">
+      <img id="previewImg" src="" alt="">
+    </div>
+  </div>
+
+  <div class="layout">
+
+    <!-- ——— Left: Identity panel ——— -->
+    <aside class="panel-left">
+      <div class="identity-top">
+        <div class="identity-nav">
+          <span class="identity-nav-name">Maria Gratsia</span>
+          <nav class="identity-nav-links">
+            <a href="#work" class="identity-nav-link">Work</a>
+            <a href="about.html" class="identity-nav-link">About</a>
+          </nav>
+        </div>
+
+        <div class="identity-main">
+          <h1 class="identity-title">Design<br>& <em>Illustration</em></h1>
+          <p class="identity-tagline">Brand, product, and editorial work across 10+ years with global clients.</p>
+          <div class="identity-disciplines">
+            <span class="disc-tag">Brand</span>
+            <span class="disc-tag">Illustration</span>
+            <span class="disc-tag">Product</span>
+            <span class="disc-tag">Editorial</span>
+            <span class="disc-tag">Art Direction</span>
+            <span class="disc-tag">AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="identity-bottom">
+        <span class="identity-location">Greece<br>Remote</span>
+        <div class="identity-contact">
+          <a href="mailto:maria.gratsia@gmail.com" class="identity-contact-link">
+            Email <span class="arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="identity-contact-link">
+            LinkedIn <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ——— Right: Work panel ——— -->
+    <main class="panel-right" id="work">
+
+      <!-- Selected Work -->
+      <div class="section-header">
+        <span class="section-label-text">Selected Work</span>
+        <span class="section-count">5 projects</span>
+      </div>
+
+      <div class="project-list">
+
+        <a href="projects/american-greetings.html" class="project-row"
+           data-img="assets/images/ag-cover.png" data-img-alt="American Greetings badges">
+          <span class="project-row-index">01</span>
+          <div class="project-row-body">
+            <div class="project-row-title">American Greetings</div>
+            <div class="project-row-meta">
+              <span class="project-row-cats">Art Direction · Illustration · Visual System</span>
+            </div>
+          </div>
+          <span class="project-row-arrow">→</span>
+        </a>
+
+        <a href="projects/farm-sanctuary.html" class="project-row"
+           data-img="assets/images/fs-cover-3.png" data-img-alt="Farm Sanctuary">
+          <span class="project-row-index">02</span>
+          <div class="project-row-body">
+            <div class="project-row-title">Farm Sanctuary</div>
+            <div class="project-row-meta">
+              <span class="project-row-cats">Education · Visual System · Infographics</span>
+            </div>
+          </div>
+          <span class="project-row-arrow">→</span>
+        </a>
+
+        <a href="#" class="project-row" data-img="" data-img-alt="Able">
+          <span class="project-row-index">03</span>
+          <div class="project-row-body">
+            <div class="project-row-title">Able</div>
+            <div class="project-row-meta">
+              <span class="project-row-cats">Product · Illustration · Visual System</span>
+            </div>
+          </div>
+          <span class="project-row-arrow">→</span>
+        </a>
+
+        <a href="#" class="project-row" data-img="" data-img-alt="impact.com">
+          <span class="project-row-index">04</span>
+          <div class="project-row-body">
+            <div class="project-row-title">impact.com</div>
+            <div class="project-row-meta">
+              <span class="project-row-cats">Brand · Marketing · Data Visualisation</span>
+            </div>
+          </div>
+          <span class="project-row-arrow">→</span>
+        </a>
+
+        <a href="#" class="project-row" data-img="" data-img-alt="Gymly">
+          <span class="project-row-index">05</span>
+          <div class="project-row-body">
+            <div class="project-row-title">Gymly</div>
+            <div class="project-row-meta">
+              <span class="project-row-cats">Product Design · UX · Prototype</span>
+            </div>
+          </div>
+          <span class="project-row-arrow">→</span>
+        </a>
+
+      </div>
+
+      <!-- AI Explorations -->
+      <div class="section-explorations-wrap">
+        <div class="section-header">
+          <span class="section-label-text">AI Explorations</span>
+          <span class="section-count">3 projects</span>
+        </div>
+
+        <div class="project-list section-explorations">
+
+          <a href="projects/desir.html" class="project-row"
+             data-img="assets/images/desir-cover.png" data-img-alt="Desir fragrance">
+            <span class="project-row-index">01</span>
+            <div class="project-row-body">
+              <div class="project-row-title">Desir</div>
+              <div class="project-row-meta">
+                <span class="project-row-cats">Creative Direction · AI Imagery</span>
+              </div>
+            </div>
+            <span class="project-row-arrow">→</span>
+          </a>
+
+          <a href="#" class="project-row" data-img="" data-img-alt="Pressio">
+            <span class="project-row-index">02</span>
+            <div class="project-row-body">
+              <div class="project-row-title">Pressio</div>
+              <div class="project-row-meta">
+                <span class="project-row-cats">Product Design · AI-assisted Development</span>
+                <span class="badge-wip" style="color:rgba(255,255,255,0.25); border-color:rgba(255,255,255,0.1);">In progress</span>
+              </div>
+            </div>
+            <span class="project-row-arrow">→</span>
+          </a>
+
+          <a href="#" class="project-row" data-img="" data-img-alt="Neurochic">
+            <span class="project-row-index">03</span>
+            <div class="project-row-body">
+              <div class="project-row-title">Neurochic</div>
+              <div class="project-row-meta">
+                <span class="project-row-cats">Brand · AI Imagery</span>
+                <span class="badge-wip" style="color:rgba(255,255,255,0.25); border-color:rgba(255,255,255,0.1);">Coming soon</span>
+              </div>
+            </div>
+            <span class="project-row-arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Footer strip -->
+      <div class="panel-right-footer">
+        <span class="panel-right-footer-note">Based in Greece. Working remotely.</span>
+        <span class="panel-right-footer-year">© 2025</span>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // ——— Smooth cursor-following image preview ———
+    (function() {
+      var ghost = document.getElementById('previewGhost');
+      var img   = document.getElementById('previewImg');
+      if (!ghost || !img) return;
+
+      var mouseX = 0, mouseY = 0;
+      var posX   = 0, posY   = 0;
+      var raf    = null;
+      var active = false;
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function animate() {
+        posX = lerp(posX, mouseX, 0.12);
+        posY = lerp(posY, mouseY, 0.12);
+        ghost.style.transform = 'translate(' + posX + 'px, ' + posY + 'px)';
+        if (active) raf = requestAnimationFrame(animate);
+      }
+
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      document.querySelectorAll('.project-row[data-img]').forEach(function(row) {
+        var src = row.getAttribute('data-img');
+        var alt = row.getAttribute('data-img-alt') || '';
+
+        row.addEventListener('mouseenter', function() {
+          if (!src) return;
+          img.src = src;
+          img.alt = alt;
+          ghost.classList.add('visible');
+          active = true;
+          posX = mouseX;
+          posY = mouseY;
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(animate);
+        });
+
+        row.addEventListener('mouseleave', function() {
+          ghost.classList.remove('visible');
+          active = false;
+          if (raf) { cancelAnimationFrame(raf); raf = null; }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
