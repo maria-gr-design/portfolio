@@ -182,9 +182,7 @@
         flex: none;
         width: 510px;
         align-self: center;
-        transform: scale(0.72);
         transform-origin: top center;
-        margin-bottom: -140px;
       }
     }
   </style>
@@ -231,7 +229,7 @@
 
         <!-- 2: Art -->
         <div class="about-photo" data-tip="At the EMST Museum of Modern Art">
-          <img src="assets/images/About/art.jpg" alt="">
+          <img src="assets/images/About/art.jpg" alt="" style="transform: scale(1.05); transform-origin: center bottom;">
         </div>
 
         <!-- 3: Sunset -->
@@ -252,6 +250,26 @@
   <div class="photo-tip" id="photoTip"></div>
 
   <script>
+    // ——— Photo composition: fit within text padding on mobile ———
+    (function() {
+      var photos = document.querySelector('.about-photos');
+      if (!photos) return;
+      function fit() {
+        if (window.innerWidth > 860) {
+          photos.style.transform = '';
+          photos.style.marginBottom = '';
+          return;
+        }
+        var padding = 24;
+        var available = window.innerWidth - padding * 2;
+        var scale = Math.min(available / 510, 0.72);
+        photos.style.transform = 'scale(' + scale + ')';
+        photos.style.marginBottom = (500 * scale - 500) + 'px';
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+
     // ——— Video card: play on hover, pause on leave ———
     (function() {
       var card = document.getElementById('videoCard');
