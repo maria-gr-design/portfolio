@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--
+  PROJECT PAGE TEMPLATE
+  1. Duplicate and rename (e.g. american-greetings.html)
+  2. Search for "EDIT:" and replace placeholder content
+  3. Images go in ../assets/images/
+  4. Layout blocks: .container (800px text), .container-wide (1100px media)
+  5. Media blocks: .img-big, .img-medium, .img-full, .grid, .photo-row
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: page title -->
+  <title>Able — Maria Gratsia</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <link href="../assets/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <a class="skip-link" href="#project-content">Skip to content</a>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-name">Maria Gratsia</a>
+    <div class="nav-links">
+      <a href="../index.html#work" class="nav-link">Work</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main id="project-content">
+  <div class="project-hero-outer">
+  <div class="project-back">
+    <a href="../index.html#work">
+      <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="24" y1="4" x2="4" y2="4"/><polyline points="8,7 4,4 8,1"/></svg>
+      All projects
+    </a>
+  </div>
+
+  <!-- EDIT: title, labels, description, role, tools, year -->
+  <div class="project-hero">
+    <span class="project-hero-labels">Product · Illustration · Visual System</span>
+    <h1>Able</h1>
+    <p class="project-hero-desc">Able is a subscription-based health & wellness app. Working with the Product Lead as part of the Product Design Team, I developed an illustration style for onboarding and in-app experiences, with the goal of establishing a scalable visual direction for ongoing in-app use and content creation.</p>
+    <div class="project-hero-meta">
+      <div class="project-hero-meta-item">
+        <strong>Role</strong>
+        Product Illustrator
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Tools</strong>
+        Figma, Illustrator
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Year</strong>
+        2021-2022
+      </div>
+    </div>
+  </div>
+  </div><!-- /project-hero-outer -->
+
+  <!-- EDIT: cover image -->
+  <div class="container">
+    <div class="img-medium">
+      <img src="../assets/images/able-style-1.png" alt="Project cover">
+    </div>
+  </div>
+
+  <!-- EDIT: sections — duplicate and adjust as needed -->
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Challenge</h4>
+      <p class="section-text">Develop an illustration style that is engaging for first-time users, and can be implemented across onboarding and in-app content. The style should support quick production in scale and its impact must be validated through user testing.</p>
+    </div>
+  </div>
+
+  <!-- Media options: .img-big (1100px), .img-medium (800px), .grid, .photo-row -->
+  <div class="container">
+    <div class="img-medium">
+      <img src="../assets/images/able-style-2.png" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Approach</h4>
+      <p class="section-text">Conducted research and explored multiple directions. Based on technical and production-time restrictions, the options were limited and a realistic direction was decided. Iterated through team review cycles and refined two options for testing in onboarding flow.</p>
+    </div>
+  </div>
+
+  <!-- Option tabs -->
+  <div class="container" style="margin-top: 48px;">
+    <div style="display: flex; gap: 8px;">
+      <button id="ableTab1" onclick="ableShowTab(1)" style="font-family: var(--font); font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--text); background: var(--text); color: var(--bg); cursor: pointer;">Option 1</button>
+      <button id="ableTab2" onclick="ableShowTab(2)" style="font-family: var(--font); font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--line); background: transparent; color: var(--text-tertiary); cursor: pointer;">Option 2</button>
+    </div>
+  </div>
+
+  <!-- Style 1 carousel -->
+  <div id="ablePanel1">
+    <div id="ableCarousel" style="overflow: hidden; position: relative; height: 380px; margin-top: 24px; width: 100vw; margin-left: calc(50% - 50vw);">
+      <div id="ableCarouselTrack" style="display: flex; gap: 0; height: 100%; transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform;">
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/01-body-shared.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/02-body-congrats.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/03-body-type-female.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/04-body-customizeplan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/05-habits-goal.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/06-habits-changes-female.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/07-habits-exercise-not-required-female.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/09-habits-plan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/10-habits-motivation.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/11-habits-busy.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/12-nutrition-start.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/13-nutrition-cbtfeedbackuncertain.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/14-nutrition-control.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/15-nutrition-plan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 1/16-Sit tight.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Style 2 carousel -->
+  <div id="ablePanel2" style="display: none;">
+    <div id="ableCarousel2" style="overflow: hidden; position: relative; height: 380px; margin-top: 24px; width: 100vw; margin-left: calc(50% - 50vw);">
+      <div id="ableCarouselTrack2" style="display: flex; gap: 0; height: 100%; transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform;">
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/01-body-shared.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/02-body-congrats.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/03-body-type-female.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/04-body-customizeplan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/05-habits-goal.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/06-habits-changes-female.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/08-habits-exercise-not-required-male.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/09-habits-plan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/10-habits-motivation.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/11-habits-busy.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/12-nutrition-start.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/13-nutrition-cbt.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/14-nutrition-control.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/15-nutrition-plan.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+        <div style="flex: 0 0 200px;"><img src="../assets/images/Able Onboarding Style 2/16-Sit tight.png" alt="" loading="lazy" style="height: 100%; width: auto; display: block;"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <p class="section-text">Additionally, early explorations for in-app content creation (stories) were created.</p>
+    </div>
+  </div>
+
+    <div class="container">
+    <div class="img-medium">
+      <img src="../assets/images/able-stories-exploration.png" alt="Style 1 screens for user testing" loading="lazy" style="width: 75%; height: auto; display: block; margin: 0 auto;">
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Outcome</h4>
+      <p class="section-text"> Following the A/B testing results, the selected style was also implemented to introduce the coach feature.</p>
+    </div>
+  </div>
+
+  <div class="container-wide">
+    <div class="img-full">
+      <img src="../assets/images/able-chat-onboarding-story.png" alt="Style 1 screens for user testing" loading="lazy">
+    </div>
+  </div>
+
+
+    <!-- EDIT: next project link -->
+    <div class="next-project">
+      <p class="next-label">Next project</p>
+      <a href="gymly.html" class="next-link">
+        Gymly
+        <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="5" x2="22" y2="5"/><polyline points="18,1 22,5 18,9"/></svg>
+      </a>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer footer--dark" id="contact">
+    <div class="footer-inner">
+      <span class="footer-location">Based in Greece. Working remotely.</span>
+      <div class="footer-links-col">
+        <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
+          Email me <span class="arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
+          LinkedIn <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="7" y1="12" x2="7" y2="2"/>
+      <polyline points="2,7 7,2 12,7"/>
+    </svg>
+  </button>
+
+  <script>
+    // ——— Go to top ———
+    (function() {
+      var btn = document.getElementById('toTop');
+      var onScroll = function() {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // ——— Tab switcher ———
+    function ableShowTab(n) {
+      var t1 = document.getElementById('ableTab1');
+      var t2 = document.getElementById('ableTab2');
+      var p1 = document.getElementById('ablePanel1');
+      var p2 = document.getElementById('ablePanel2');
+      var active = 'font-family:var(--font);font-size:13px;font-weight:700;padding:6px 16px;border-radius:20px;border:1px solid var(--text);background:var(--text);color:var(--bg);cursor:pointer;';
+      var inactive = 'font-family:var(--font);font-size:13px;font-weight:700;padding:6px 16px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--text-tertiary);cursor:pointer;';
+      if (n === 1) {
+        t1.style.cssText = active; t2.style.cssText = inactive;
+        p1.style.display = ''; p2.style.display = 'none';
+      } else {
+        t2.style.cssText = active; t1.style.cssText = inactive;
+        p2.style.display = ''; p1.style.display = 'none';
+      }
+    }
+
+    // ——— Carousel factory ———
+    function makeCarousel(carouselId, trackId) {
+      var carousel = document.getElementById(carouselId);
+      var track = document.getElementById(trackId);
+      if (!carousel || !track) return;
+      var step = 200;
+      var total = track.children.length;
+      var offset = 0;
+      var startX = 0;
+      var dragDist = 0;
+
+      function setPadding() {
+        var ref = document.querySelector('.container');
+        if (ref) track.style.paddingLeft = ref.getBoundingClientRect().left + 'px';
+      }
+      setPadding();
+      window.addEventListener('resize', function() { setPadding(); goTo(0); });
+
+      function goTo(px) {
+        offset = Math.max(0, Math.min(px, (total - 1) * step));
+        track.style.transform = 'translateX(-' + offset + 'px)';
+      }
+
+      carousel.addEventListener('click', function(e) {
+        var rect = carousel.getBoundingClientRect();
+        goTo(e.clientX - rect.left < rect.width / 2 ? offset - step : offset + step);
+      });
+      carousel.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; dragDist = 0; }, { passive: true });
+      carousel.addEventListener('touchmove', function(e) { dragDist = e.touches[0].clientX - startX; }, { passive: true });
+      carousel.addEventListener('touchend', function() { if (Math.abs(dragDist) > 40) goTo(offset + (dragDist > 0 ? -step : step)); });
+      carousel.addEventListener('wheel', function(e) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); goTo(offset + e.deltaX * 0.6); }
+      }, { passive: false });
+
+      goTo(0);
+    }
+
+    makeCarousel('ableCarousel', 'ableCarouselTrack');
+    makeCarousel('ableCarousel2', 'ableCarouselTrack2');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Gratsia — Designer & Illustrator</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <link href="assets/styles.css" rel="stylesheet">
+  <style>
+    .about-wrap {
+      min-height: calc(100vh - 56px);
+      display: flex;
+      align-items: center;
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 80px;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .about-text h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .about-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .about-link:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    /* Stacked photo collage */
+    .about-photos {
+      flex: 0 0 510px;
+      position: relative;
+      height: 500px;
+    }
+
+    .about-photo {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .about-photo img,
+    .about-photo video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease;
+    }
+
+    .about-photo:hover img,
+    .about-photo:hover video {
+      filter: grayscale(0%);
+    }
+
+    /* Card positions — natural photo pile with overlaps */
+    .about-photo:nth-child(1) {
+      /* Embroidery — square, bottom-left corner of art */
+      width: 158px; height: 158px;
+      top: 252px; left: -28px;
+      transform: rotate(-2deg);
+      z-index: 3;
+    }
+    .about-photo:nth-child(2) {
+      /* Art — largest, centre anchor */
+      width: 225px; height: 275px;
+      top: 30px; left: 20px;
+      transform: rotate(-2.5deg);
+      z-index: 2;
+    }
+    .about-photo:nth-child(3) {
+      /* Sunset — bigger, bottom-right where video was */
+      width: 228px; height: 184px;
+      top: 262px; left: 195px;
+      transform: rotate(2.5deg);
+      z-index: 1;
+    }
+    .about-photo:nth-child(4) {
+      /* Video — bigger, top-right near where embroidery was */
+      width: 215px; height: 174px;
+      top: 35px; left: 218px;
+      transform: rotate(-3deg);
+      z-index: 4;
+    }
+
+    /* Hover — scale 25%, come to front */
+    .about-photo:nth-child(1):hover {
+      transform: rotate(-2deg) scale(1.25);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .about-photo:nth-child(2):hover {
+      transform: rotate(-2.5deg) scale(1.25);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .about-photo:nth-child(3):hover {
+      transform: rotate(2.5deg) scale(1.25);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .about-photo:nth-child(4):hover {
+      transform: rotate(-3deg) scale(1.25);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    /* Photo tooltips */
+    .photo-tip {
+      position: fixed;
+      background: var(--dark);
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 200;
+      font-family: var(--font);
+      letter-spacing: 0.01em;
+    }
+    .photo-tip.visible { opacity: 1; }
+
+/* Tap-and-hold state (mobile) */
+    .about-photo.tapped img,
+    .about-photo.tapped video { filter: grayscale(0%); }
+    .about-photo.tapped { z-index: 10; box-shadow: 0 24px 56px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1); }
+    .about-photo:nth-child(1).tapped { transform: rotate(-2deg) scale(1.25); }
+    .about-photo:nth-child(2).tapped { transform: rotate(-2.5deg) scale(1.25); }
+    .about-photo:nth-child(3).tapped { transform: rotate(2.5deg) scale(1.25); }
+    .about-photo:nth-child(4).tapped { transform: rotate(-3deg) scale(1.25); }
+
+    @media (max-width: 860px) {
+      .about-wrap {
+        flex-direction: column;
+        padding: 60px 24px 0;
+        gap: 48px;
+        align-items: flex-start;
+      }
+      .about-text { max-width: 100%; }
+      .about-photos {
+        flex: none;
+        align-self: stretch;
+        display: flex;
+        justify-content: center;
+        transform: scale(0.72);
+        transform-origin: top center;
+        margin-bottom: -140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#about-content">Skip to content</a>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-name">Maria Gratsia</a>
+    <div class="nav-links">
+      <a href="index.html#work" class="nav-link">Work</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main id="about-content">
+    <div class="about-wrap">
+
+      <div class="about-text">
+        <h1>Designer<br>&amp; Illustrator</h1>
+
+        <p>I'm based in Greece, working remotely with brands and teams around the globe.</p>
+
+        <p>My work sits at the intersection of brand, illustration, and digital. I move between art direction, visual systems, and product work. I like problems that require both thinking and making.</p>
+
+        <p>I've always been curious to explore new ways to create: from the most analog, like embroidery, to the most tech-forward, like AI. A big part of me likes research, analysis, and finding patterns, so whenever I get the chance I step into those areas too.</p>
+
+        <p>I find inspiration in art, nature, crafting, and books. I love animals, walks &amp; a good talk.</p>
+
+        <div class="about-links">
+          <a href="mailto:maria.gratsia@gmail.com" class="about-link">Email ↗</a>
+          <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="about-link">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="about-photos">
+
+        <!-- 1: Embroidery -->
+        <div class="about-photo" data-tip="Freestyle embroidery">
+          <img src="assets/images/About/freestyle-embroidery.webp" alt="">
+        </div>
+
+        <!-- 2: Art -->
+        <div class="about-photo" data-tip="At the EMST Museum of Modern Art">
+          <img src="assets/images/About/art.jpg" alt="">
+        </div>
+
+        <!-- 3: Sunset -->
+        <div class="about-photo" data-tip="A sunset in Crete">
+          <img src="assets/images/About/sunset.jpg" alt="">
+        </div>
+
+        <!-- 4: Almond tree video -->
+        <div class="about-photo" id="videoCard" data-tip="Spring vibes">
+          <video src="assets/images/About/almond-tree.mp4" muted playsinline loop></video>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <div class="photo-tip" id="photoTip"></div>
+
+  <script>
+    // ——— Video card: play on hover, pause on leave ———
+    (function() {
+      var card = document.getElementById('videoCard');
+      if (!card) return;
+      var video = card.querySelector('video');
+      card.addEventListener('mouseenter', function() { video.play(); });
+      card.addEventListener('mouseleave', function() {
+        video.pause();
+        video.currentTime = 0;
+      });
+    })();
+
+    // ——— Photo tooltips ———
+    (function() {
+      var tip = document.getElementById('photoTip');
+      if (!tip) return;
+      var cards = document.querySelectorAll('.about-photo[data-tip]');
+      cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          tip.textContent = card.getAttribute('data-tip');
+          tip.style.left = (e.clientX + 14) + 'px';
+          tip.style.top = (e.clientY + 14) + 'px';
+          tip.classList.add('visible');
+        });
+        card.addEventListener('mouseleave', function() {
+          tip.classList.remove('visible');
+        });
+      });
+    })();
+
+    // ——— Mobile: tap to toggle colour ———
+    (function() {
+      if (!('ontouchstart' in window)) return;
+      var cards = Array.from(document.querySelectorAll('.about-photo'));
+
+      function clearTapped(except) {
+        cards.forEach(function(c) {
+          if (c === except) return;
+          c.classList.remove('tapped');
+          var v = c.querySelector('video');
+          if (v) { v.pause(); v.currentTime = 0; }
+        });
+      }
+
+      cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          var isActive = card.classList.contains('tapped');
+          clearTapped();
+          if (!isActive) {
+            card.classList.add('tapped');
+            var video = card.querySelector('video');
+            if (video) video.play();
+          }
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.about-photo')) clearTapped();
+      });
+    })();
+  </script>
+
+</body>
+</html>

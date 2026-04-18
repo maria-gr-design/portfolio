@@ -33,7 +33,7 @@
   <div class="project-hero">
     <span class="project-hero-labels">Art Direction · Illustration · Visual System</span>
     <h1>American Greetings</h1>
-    <p class="project-hero-desc">American Greetings is a greeting card and digital messaging platform. Working with the Digital Design Director, I designed a badge system for their membership product to encourage engagement and repeat usage. The system spans milestones, seasonal achievements, feature exploration, and mobile challenges, all integrated within the platform.</p>
+    <p class="project-hero-desc">American Greetings is a greeting card and digital greetings platform. Working with the Digital Design Director, I led the art direction and creation of a system of badges for their online membership platform. The gamified member experience aims to encourage engagement and repeat usage and includes milestones, seasonal achievements, new features' exploration, and mobile challenges.</p>
     <div class="project-hero-meta">
       <div class="project-hero-meta-item">
         <strong>Role</strong>
@@ -45,43 +45,47 @@
       </div>
       <div class="project-hero-meta-item">
         <strong>Year</strong>
-        2025
+        2025-2026
       </div>
     </div>
   </div>
   </div><!-- /project-hero-outer -->
 
+    <!-- Step animation -->
+  <div class="container-wide">
+    <div class="step-player" id="stepPlayer">
+      <div class="step-animation">
+        <img src="../assets/images/ag-step-5.png" alt="Badges on plum background" class="active" loading="lazy">
+        <img src="../assets/images/ag-step-1.png" alt="Step 1: Initial sketches" loading="lazy">
+        <img src="../assets/images/ag-step-2.png" alt="Step 2: Background" loading="lazy">
+        <img src="../assets/images/ag-step-3.png" alt="Step 3: Secondary elements" loading="lazy">
+        <img src="../assets/images/ag-step-4.png" alt="Step 4: Final result" loading="lazy">
+        <img src="../assets/images/ag-step-5.png" alt="Step 5: Final result" loading="lazy">
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-prev" id="stepPrev" aria-label="Previous step">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
+      </button>
+      <span class="carousel-counter" id="stepCounter">1 / 6</span>
+      <button class="carousel-next" id="stepNext" aria-label="Next step">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
+      </button>
+    </div>
+  </div>
+
   <!-- Challenge -->
   <div class="container">
     <div class="section-block section-block--double-top">
       <h4 class="section-title">Challenge</h4>
-      <p class="section-text">The badge system needed to scale across 30 achievements with room to grow, while remaining consistent. Each badge had to work across multiple UI backgrounds without losing clarity. The visuals also needed to feel distinct across categories while staying aligned with the brand.</p>
+      <p class="section-text">Build a coherent and scalable visual system, flexible to support multiple concepts and sub-categories, while aligning with the brand. Each badge needed to work across multiple UI backgrounds without losing clarity and maintain readability in small size.</p>
     </div>
   </div>
 
-  <!-- Step animation -->
+  <!-- Badges 100px -->
   <div class="container-wide">
-    <div class="step-player" id="stepPlayer">
-      <div class="step-animation">
-        <img src="../assets/images/ag-step-1.png" alt="Step 1: Initial sketches" class="active" loading="lazy">
-        <img src="../assets/images/ag-step-2.png" alt="Step 2: Refined line art" loading="lazy">
-        <img src="../assets/images/ag-step-3.png" alt="Step 3: Flat colors" loading="lazy">
-        <img src="../assets/images/ag-step-4.png" alt="Step 4: Shading and detail" loading="lazy">
-        <img src="../assets/images/ag-step-5.png" alt="Step 5: Final polish" loading="lazy">
-        <div class="step-indicators">
-          <button class="step-dot active" data-step="0" aria-label="Step 1"></button>
-          <button class="step-dot" data-step="1" aria-label="Step 2"></button>
-          <button class="step-dot" data-step="2" aria-label="Step 3"></button>
-          <button class="step-dot" data-step="3" aria-label="Step 4"></button>
-          <button class="step-dot" data-step="4" aria-label="Step 5"></button>
-        </div>
-        <button class="step-arrow step-arrow--prev" id="stepPrev" aria-label="Previous step">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
-        </button>
-        <button class="step-arrow step-arrow--next" id="stepNext" aria-label="Next step">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
-        </button>
-      </div>
+    <div class="img-full">
+      <img id="smallBadges" src="../assets/images/ag-100px.png"/>
     </div>
   </div>
 
@@ -89,16 +93,21 @@
   <div class="container">
     <div class="section-block section-block--double-top">
       <h4 class="section-title">Approach</h4>
-      <p class="section-text">I explored a few visual directions and selected one that balanced clarity, playfulness, and scalability. A shared badge shape and composition rules kept all designs connected while allowing variation across concepts. Each badge was developed by translating its achievement into a clear visual idea, with future animation considered during design.</p>
+      <p class="section-text">I suggested the concept of a micro-world with floating elements, flexible enough to support both realistic and abstract concepts. I created a defined visual language that could scale and consistent composition rules were applied to all badges. The concepts were developed by translating each achievement into a visual idea aimed to bring meaning and joy. Inspired by the concept of floating, the team decided to animate the badges during implementation.</p>
     </div>
   </div>
 
   <!-- Sketching video -->
   <div class="container-wide">
-    <div class="video-container">
-      <video id="sketchVideo" src="../assets/images/ag-sketching-2.mp4" autoplay muted playsinline></video>
-      <button class="carousel-pause" id="videoPause" aria-label="Pause video">
-        <svg viewBox="0 0 12 12" fill="currentColor" width="12" height="12"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>
+    <div class="video-container" style="aspect-ratio: unset;">
+      <video id="sketchVideo" src="../assets/images/ag-sketching-2.mp4" autoplay muted playsinline style="width: 100%; height: auto; display: block;"></video>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px;">
+      <button id="videoPause" aria-label="Pause" style="background: none; border: 1px solid var(--line); color: var(--text-secondary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>
+      </button>
+      <button id="videoRestart" aria-label="Restart" style="background: none; border: 1px solid var(--line); color: var(--text-secondary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7a5 5 0 1 0 1.5-3.5"/><polyline points="2,2 2,5.5 5.5,5.5"/></svg>
       </button>
     </div>
   </div>
@@ -107,7 +116,7 @@
   <div class="container">
     <div class="section-block section-block--double-top">
       <h4 class="section-title">Outcome</h4>
-      <p class="section-text">Delivered a complete set of 30 badges for the initial release, covering multiple categories and use cases within the platform.</p>
+      <p class="section-text">I delivered a set of 30 badges for the initial release, covering multiple categories and concepts, while maintaining a consistent style. The final deliverables were created to support animation.</p>
     </div>
   </div>
 
@@ -148,12 +157,13 @@
   </div>
   <div class="badge-tooltip" id="badgeTooltip"></div>
 
+
   <!-- Next project -->
   <div class="container">
     <div class="next-project">
       <p class="next-label">Next project</p>
-      <a href="farm-sanctuary.html" class="next-link">
-        Farm Sanctuary
+      <a href="impact.html" class="next-link">
+        impact.com
         <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="5" x2="22" y2="5"/><polyline points="18,1 22,5 18,9"/></svg>
       </a>
     </div>
@@ -218,73 +228,95 @@
       });
     })();
 
-    // ——— Step animation (autoplay once, arrows on hover) ———
+    // ——— Step animation (manual, counter, wheel, swipe) ———
     (function() {
       var player = document.getElementById('stepPlayer');
       if (!player) return;
       var images = player.querySelectorAll('.step-animation img');
-      var dots = player.querySelectorAll('.step-dot');
+      var counter = document.getElementById('stepCounter');
       var prevBtn = document.getElementById('stepPrev');
       var nextBtn = document.getElementById('stepNext');
+      var total = images.length;
       var current = 0;
-      var interval;
-      var autoDone = false;
+      var lastWheel = 0;
 
       function showStep(i) {
-        current = ((i % images.length) + images.length) % images.length;
+        current = ((i % total) + total) % total;
         images.forEach(function(img, idx) { img.classList.toggle('active', idx === current); });
-        dots.forEach(function(dot, idx) { dot.classList.toggle('active', idx === current); });
+        if (counter) counter.textContent = (current + 1) + ' / ' + total;
       }
 
-      function advance() {
+      prevBtn.addEventListener('click', function() { showStep(current - 1); });
+      nextBtn.addEventListener('click', function() { showStep(current + 1); });
+
+      player.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var now = Date.now();
+        if (now - lastWheel < 600) return;
+        var delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(delta) < 20) return;
+        lastWheel = now;
+        showStep(delta > 0 ? current + 1 : current - 1);
+      }, { passive: false });
+
+      var touchStartX = 0, touchStartY = 0;
+      player.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      player.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+          showStep(dx < 0 ? current + 1 : current - 1);
+        }
+      }, { passive: true });
+
+      showStep(0);
+
+      var interval = setInterval(function() {
         var next = current + 1;
-        if (next >= images.length) { clearInterval(interval); autoDone = true; return; }
+        if (next >= total) { clearInterval(interval); return; }
         showStep(next);
-      }
+      }, 2500);
 
-      interval = setInterval(advance, 2500);
-
-      dots.forEach(function(dot) {
-        dot.addEventListener('click', function() {
-          clearInterval(interval);
-          autoDone = true;
-          showStep(parseInt(this.getAttribute('data-step')));
-        });
-      });
-
-      prevBtn.addEventListener('click', function() {
-        clearInterval(interval); autoDone = true;
-        showStep(current - 1);
-      });
-      nextBtn.addEventListener('click', function() {
-        clearInterval(interval); autoDone = true;
-        showStep(current + 1);
-      });
+      function stopAuto() { clearInterval(interval); }
+      prevBtn.addEventListener('click', stopAuto);
+      nextBtn.addEventListener('click', stopAuto);
+      player.addEventListener('wheel', stopAuto, { passive: true });
+      player.addEventListener('touchend', stopAuto, { passive: true });
     })();
 
-    // ——— Video pause/play (loop 3 times) ———
+    // ——— Sketching video: autoplay once, pause, restart ———
     (function() {
       var video = document.getElementById('sketchVideo');
-      var btn = document.getElementById('videoPause');
-      if (!video || !btn) return;
-      var playCount = 0;
-      var maxPlays = 3;
+      var pauseBtn = document.getElementById('videoPause');
+      var restartBtn = document.getElementById('videoRestart');
+      if (!video || !pauseBtn) return;
+
+      var playIcon = '<svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><polygon points="3,1 10,6 3,11"/></svg>';
+      var pauseIconSvg = '<svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>';
+
+      video.play();
 
       video.addEventListener('ended', function() {
-        playCount++;
-        if (playCount < maxPlays) {
+        pauseBtn.innerHTML = playIcon;
+      });
+
+      pauseBtn.addEventListener('click', function() {
+        if (video.paused || video.ended) {
           video.play();
+          pauseBtn.innerHTML = pauseIconSvg;
+        } else {
+          video.pause();
+          pauseBtn.innerHTML = playIcon;
         }
       });
 
-      btn.addEventListener('click', function() {
-        if (video.paused) {
-          video.play();
-          btn.innerHTML = '<svg viewBox="0 0 12 12" fill="currentColor" width="12" height="12"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>';
-        } else {
-          video.pause();
-          btn.innerHTML = '<svg viewBox="0 0 12 12" fill="currentColor" width="12" height="12"><polygon points="3,1 10,6 3,11"/></svg>';
-        }
+      restartBtn.addEventListener('click', function() {
+        video.currentTime = 0;
+        video.play();
+        pauseBtn.innerHTML = pauseIconSvg;
       });
     })();
   </script>

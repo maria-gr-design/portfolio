@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+  PROJECT PAGE TEMPLATE
+  1. Duplicate and rename (e.g. american-greetings.html)
+  2. Search for "EDIT:" and replace placeholder content
+  3. Images go in ../assets/images/
+  4. Layout blocks: .container (800px text), .container-wide (1100px media)
+  5. Media blocks: .img-big, .img-medium, .img-full, .grid, .photo-row
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: page title -->
+  <title>Pressio — Maria Gratsia</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <link href="../assets/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <a class="skip-link" href="#project-content">Skip to content</a>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-name">Maria Gratsia</a>
+    <div class="nav-links">
+      <a href="../index.html#work" class="nav-link">Work</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main id="project-content">
+  <div class="project-hero-outer">
+  <div class="project-back">
+    <a href="../index.html#work">
+      <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="24" y1="4" x2="4" y2="4"/><polyline points="8,7 4,4 8,1"/></svg>
+      All projects
+    </a>
+  </div>
+
+  <!-- EDIT: title, labels, description, role, tools, year -->
+  <div class="project-hero">
+    <span class="project-hero-labels">Product · AI · Vibe-coding</span>
+    <h1>Pressio</h1>
+    <p class="project-hero-desc">Pressio is a mobile app for blood pressure tracking, designed for older adults who find existing health apps overwhelming. Using AI tools for research and design, I'm vibe-coding the product step-by-step through iterative prompting. The focus is accessibility, clarity, and ease of sharing data with family and doctors.</p>
+    <div class="project-hero-meta">
+      <div class="project-hero-meta-item">
+        <strong>Role</strong>
+        Product Design, Vibe-coding
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Tools</strong>
+        Claude Code
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Year</strong>
+        2026
+      </div>
+    </div>
+  </div>
+  </div><!-- /project-hero-outer -->
+
+  <!-- EDIT: cover image -->
+  <div class="container-wide">
+    <div class="img-full">
+      <img src="../assets/images/REPLACE-cover.png" alt="Project cover">
+    </div>
+  </div>
+
+  <!-- EDIT: sections — duplicate and adjust as needed -->
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Idea</h4>
+      <p class="section-text">Describe the idea.</p>
+    </div>
+  </div>
+
+  <!-- Media options: .img-big (1100px), .img-medium (800px), .grid, .photo-row -->
+  <div class="container-wide">
+    <div class="img-big">
+      <img src="../assets/images/REPLACE.png" alt="" loading="lazy">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Problem</h4>
+      <p class="section-text">Describe the problem statement.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Goal</h4>
+      <p class="section-text">Describe the project goal.</p>
+    </div>
+  </div>
+
+  </div>
+  </main>
+
+  <footer class="footer footer--dark" id="contact">
+    <div class="footer-inner">
+      <span class="footer-location">Based in Greece. Working remotely.</span>
+      <div class="footer-links-col">
+        <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
+          Email me <span class="arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
+          LinkedIn <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="7" y1="12" x2="7" y2="2"/>
+      <polyline points="2,7 7,2 12,7"/>
+    </svg>
+  </button>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('toTop');
+      var onScroll = function() {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>

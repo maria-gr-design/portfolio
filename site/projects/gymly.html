@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+  PROJECT PAGE TEMPLATE
+  1. Duplicate and rename (e.g. american-greetings.html)
+  2. Search for "EDIT:" and replace placeholder content
+  3. Images go in ../assets/images/
+  4. Layout blocks: .container (800px text), .container-wide (1100px media)
+  5. Media blocks: .img-big, .img-medium, .img-full, .grid, .photo-row
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: page title -->
+  <title>Gymly — Maria Gratsia</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=sentient@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+  <link href="../assets/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <a class="skip-link" href="#project-content">Skip to content</a>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-name">Maria Gratsia</a>
+    <div class="nav-links">
+      <a href="../index.html#work" class="nav-link">Work</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main id="project-content">
+  <div class="project-hero-outer">
+  <div class="project-back">
+    <a href="../index.html#work">
+      <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="24" y1="4" x2="4" y2="4"/><polyline points="8,7 4,4 8,1"/></svg>
+      All projects
+    </a>
+  </div>
+
+  <!-- EDIT: title, labels, description, role, tools, year -->
+  <div class="project-hero">
+    <span class="project-hero-labels">Product Design · UX · Prototype</span>
+    <h1>Gymly</h1>
+    <p class="project-hero-desc">Gymly is a white-label gym platform used by gyms to manage memberships. They wanted to build a member app for the gyms' members to reduce drop-offs. I designed the core member experience covering activity tracking, class discovery and booking, check-in, and engagement loops. This was a real project that Gymly brought us as a challenge during Dribbble's Product Design Course.</p>
+    <div class="project-hero-meta">
+      <div class="project-hero-meta-item">
+        <strong>Role</strong>
+        Product Design, Prototype
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Tools</strong>
+        Figma
+      </div>
+      <div class="project-hero-meta-item">
+        <strong>Year</strong>
+        2023
+      </div>
+    </div>
+  </div>
+  </div><!-- /project-hero-outer -->
+
+  <!-- Prototype video -->
+  <div class="container-wide">
+    <div class="video-container" style="aspect-ratio: unset;">
+      <video id="prototype" src="../assets/images/gymly-prototype.mp4" autoplay muted playsinline style="width: 100%; height: auto; display: block;"></video>
+    </div>
+    <div id="videoControls" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px;">
+      <button id="videoPause" aria-label="Pause" style="background: none; border: 1px solid var(--line); color: var(--text-secondary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg id="pauseIcon" viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>
+      </button>
+      <button id="videoRestart" aria-label="Restart" style="background: none; border: 1px solid var(--line); color: var(--text-secondary); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7a5 5 0 1 0 1.5-3.5"/><polyline points="2,2 2,5.5 5.5,5.5"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- EDIT: sections — duplicate and adjust as needed -->
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Challenge</h4>
+      <p class="section-text">People often buy gym memberships only to drop-off after a while due to low motivation, unclear value perception, and difficulty maintaining consistent workout habits.</p>
+    </div>
+    <div class="section-block">
+      <h4 class="section-title">Goal</h4>
+      <p class="section-text">Design an app that enables as many gym members as possible to be active, go to the gym, and engage more with the activities.</p>
+    </div>
+    <div class="section-block">
+      <h4 class="section-title">Approach</h4>
+      <p class="section-text">
+        I focused on three pilars to support early engagement and retention.
+        <li><b>Early value access:</b> Core features accessible before full onboarding completion to reduce friction.</li>
+        <li><b>Progress visibility:</b> Activity and progress feedback surfaced early to reinforce motivation.</li>
+        <li><b>Social engagement:</b> Features like class invitations, friend group participation, waitlists, and favorite trainers to support retention
+through social visibility.</p></li>
+    </div>
+  </div>
+
+    <div class="container">
+    <div class="img-full">
+      <img src="../assets/images/gymly-app-screens.png" alt="App screens" loading="lazy">
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section-block section-block--double-top">
+      <h4 class="section-title">Outcome</h4>
+      <p class="section-text">Delivered a functional prototype demonstrating low-friction onboarding, clear progress communication, and engagement through individual and social activity.</p>
+      <h4 class="section-title" style="margin-top: 40px;">Testing Insights</h4>
+      <p class="section-text" style="margin-top: 12px;">I conducted a usability test to evaluate if the app is intuitive, if users understand the main features, and are able to complete specific tasks. Based on the feedback and the testing results:</p>
+      <ul class="section-text" style="margin-top: 16px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <li>Users liked the concept and found it serves its purpose: motivating (plan with friends), convenient (easy book and cancel), and easy to use.</li>
+        <li>Some improvements in layout, UI elements, and microcopy are needed to add clarity in specific task flows.</li>
+        <li>Goal setting and gamification features are not explored in depth in this version and didn't grab users' attention enough.</li>
+      </ul>
+    </div>
+  </div>
+
+    <!-- EDIT: next project link -->
+    <div class="next-project">
+      <p class="next-label">Next project</p>
+      <a href="desir.html" class="next-link">
+        Desir
+        <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1"><line x1="0" y1="5" x2="22" y2="5"/><polyline points="18,1 22,5 18,9"/></svg>
+      </a>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer footer--dark" id="contact">
+    <div class="footer-inner">
+      <span class="footer-location">Based in Greece. Working remotely.</span>
+      <div class="footer-links-col">
+        <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
+          Email me <span class="arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
+          LinkedIn <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="7" y1="12" x2="7" y2="2"/>
+      <polyline points="2,7 7,2 12,7"/>
+    </svg>
+  </button>
+
+  <script>
+    // ——— Prototype video: autoplay once, pause, restart ———
+    (function() {
+      var video = document.getElementById('prototype');
+      var pauseBtn = document.getElementById('videoPause');
+      var restartBtn = document.getElementById('videoRestart');
+      var pauseIcon = document.getElementById('pauseIcon');
+      if (!video || !pauseBtn) return;
+
+      var playIcon = '<svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><polygon points="3,1 10,6 3,11"/></svg>';
+      var pauseIconSvg = '<svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>';
+
+      video.play();
+
+      video.addEventListener('ended', function() {
+        pauseBtn.innerHTML = playIcon;
+      });
+
+      pauseBtn.addEventListener('click', function() {
+        if (video.paused || video.ended) {
+          video.play();
+          pauseBtn.innerHTML = pauseIconSvg;
+        } else {
+          video.pause();
+          pauseBtn.innerHTML = playIcon;
+        }
+      });
+
+      restartBtn.addEventListener('click', function() {
+        video.currentTime = 0;
+        video.play();
+        pauseBtn.innerHTML = pauseIconSvg;
+      });
+    })();
+
+    // ——— Go to top ———
+    (function() {
+      var btn = document.getElementById('toTop');
+      var onScroll = function() {
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>
