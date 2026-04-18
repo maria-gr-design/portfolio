@@ -241,7 +241,7 @@
 
         <!-- 4: Almond tree video -->
         <div class="about-photo" id="videoCard" data-tip="Spring vibes">
-          <video src="assets/images/About/almond-tree.mp4" muted playsinline loop autoplay></video>
+          <video src="assets/images/About/almond-tree.mp4" muted playsinline loop></video>
         </div>
 
       </div>
@@ -252,11 +252,13 @@
   <div class="photo-tip" id="photoTip"></div>
 
   <script>
-    // ——— Video card: autoplay, keep running ———
+    // ——— Video card: play on hover, pause on leave ———
     (function() {
-      var video = document.querySelector('#videoCard video');
-      if (!video) return;
-      video.play();
+      var card = document.getElementById('videoCard');
+      if (!card) return;
+      var video = card.querySelector('video');
+      card.addEventListener('mouseenter', function() { video.play(); });
+      card.addEventListener('mouseleave', function() { video.pause(); video.currentTime = 0; });
     })();
 
     // ——— Photo tooltips ———
@@ -286,7 +288,8 @@
         cards.forEach(function(c) {
           if (c === except) return;
           c.classList.remove('tapped');
-          // video keeps playing — only reset style
+          var v = c.querySelector('video');
+          if (v) { v.pause(); v.currentTime = 0; }
         });
       }
 
