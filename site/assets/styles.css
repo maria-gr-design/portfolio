@@ -707,6 +707,10 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em; margin-bottom: 4px;
 }
 
+/* ——— Infographics: desktop/mobile toggle ——— */
+.infographics-mobile { display: none; }
+.infographics-desktop { display: flex; }
+
 /* ——— Project section text ——— */
 .section-title {
   font-family: var(--display); font-size: clamp(17px, 1.4vw, 20px); font-weight: 600;
@@ -1153,6 +1157,8 @@ a { color: inherit; text-decoration: none; }
   .photo-row { flex-direction: column; }
   .process-thumbs { grid-template-columns: repeat(2, 1fr); }
   .badge-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .infographics-desktop { display: none !important; }
+  .infographics-mobile { display: block; }
   .infographics-row {
     overflow-x: auto;
     scroll-snap-type: x mandatory;

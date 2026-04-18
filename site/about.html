@@ -177,12 +177,12 @@
         gap: 48px;
         align-items: flex-start;
       }
-      .about-text { max-width: 100%; }
+      .about-text { max-width: 100%; order: 2; }
       .about-photos {
         flex: none;
         width: 510px;
-        align-self: center;
-        transform-origin: top center;
+        order: 1;
+        transform-origin: top left;
       }
     }
   </style>
@@ -258,12 +258,14 @@
         if (window.innerWidth > 860) {
           photos.style.transform = '';
           photos.style.marginBottom = '';
+          photos.style.marginLeft = '';
           return;
         }
         var padding = 24;
         var available = window.innerWidth - padding * 2;
         var scale = Math.min(available / 510, 0.72);
         photos.style.transform = 'scale(' + scale + ')';
+        photos.style.marginLeft = Math.round(28 * scale) + 'px';
         photos.style.marginBottom = (500 * scale - 500) + 'px';
       }
       fit();
