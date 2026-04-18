@@ -188,7 +188,7 @@
       <span class="footer-location">Based in Greece. Working remotely.</span>
       <div class="footer-links-col">
         <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
-          Email me <span class="arrow">↗</span>
+          Email <span class="arrow">↗</span>
         </a>
         <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
           LinkedIn <span class="arrow">↗</span>
@@ -240,7 +240,7 @@
       var carousel = document.getElementById(carouselId);
       var track = document.getElementById(trackId);
       if (!carousel || !track) return;
-      var step = 200;
+      var step = 160;
       var total = track.children.length;
       var offset = 0;
       var startX = 0;
@@ -264,7 +264,7 @@
       });
       carousel.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; dragDist = 0; }, { passive: true });
       carousel.addEventListener('touchmove', function(e) { dragDist = e.touches[0].clientX - startX; }, { passive: true });
-      carousel.addEventListener('touchend', function() { if (Math.abs(dragDist) > 40) goTo(offset + (dragDist > 0 ? -step : step)); });
+      carousel.addEventListener('touchend', function() { if (Math.abs(dragDist) > 20) goTo(offset + (dragDist > 0 ? -step : step)); });
       carousel.addEventListener('wheel', function(e) {
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); goTo(offset + e.deltaX * 0.6); }
       }, { passive: false });

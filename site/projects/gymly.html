@@ -134,7 +134,7 @@ through social visibility.</p></li>
       <span class="footer-location">Based in Greece. Working remotely.</span>
       <div class="footer-links-col">
         <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
-          Email me <span class="arrow">↗</span>
+          Email <span class="arrow">↗</span>
         </a>
         <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
           LinkedIn <span class="arrow">↗</span>
@@ -163,6 +163,12 @@ through social visibility.</p></li>
       var pauseIconSvg = '<svg viewBox="0 0 12 12" fill="currentColor" width="10" height="10"><rect x="2" y="1" width="3" height="10" rx="0.5"/><rect x="7" y="1" width="3" height="10" rx="0.5"/></svg>';
 
       video.play();
+
+      // Tap to fullscreen on mobile
+      video.addEventListener('click', function() {
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+      });
 
       video.addEventListener('ended', function() {
         pauseBtn.innerHTML = playIcon;

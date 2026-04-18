@@ -175,7 +175,7 @@
       <span class="footer-location">Based in Greece. Working remotely.</span>
       <div class="footer-links-col">
         <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
-          Email me <span class="arrow">↗</span>
+          Email <span class="arrow">↗</span>
         </a>
         <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
           LinkedIn <span class="arrow">↗</span>
@@ -226,6 +226,20 @@
       grid.addEventListener('mouseleave', function() {
         tooltip.classList.remove('visible');
       });
+
+      // Touch: tap to show tooltip briefly
+      if ('ontouchstart' in window) {
+        grid.addEventListener('touchstart', function(e) {
+          var item = e.target.closest('.badge-item');
+          if (!item) return;
+          tooltip.textContent = item.getAttribute('data-name');
+          var rect = item.getBoundingClientRect();
+          tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+          tooltip.style.top = (rect.top - 36) + 'px';
+          tooltip.classList.add('visible');
+          setTimeout(function() { tooltip.classList.remove('visible'); }, 1800);
+        }, { passive: true });
+      }
     })();
 
     // ——— Step animation (manual, counter, wheel, swipe) ———
