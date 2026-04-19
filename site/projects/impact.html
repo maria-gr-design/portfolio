@@ -357,10 +357,21 @@
         var current = 0;
         var lastWheel = 0;
 
+        var viewport = carousel.querySelector('.carousel-viewport');
+        var isAdaptive = carousel.classList.contains('infographic-carousel');
+
         function goTo(i) {
           current = ((i % total) + total) % total;
           track.style.transform = 'translateX(-' + (current * 100) + '%)';
           if (counter) counter.textContent = (current + 1) + ' / ' + total;
+          if (isAdaptive && viewport) {
+            var img = slides[current].querySelector('img');
+            if (img && img.complete) {
+              viewport.style.height = img.offsetHeight + 'px';
+            } else if (img) {
+              img.onload = function() { viewport.style.height = img.offsetHeight + 'px'; };
+            }
+          }
         }
 
         if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
@@ -392,6 +403,15 @@
         }, { passive: true });
 
         goTo(0);
+
+        // Adaptive height: set after images load
+        if (isAdaptive && viewport) {
+          var firstImg = slides[0].querySelector('img');
+          function setInitialHeight() { viewport.style.height = firstImg.offsetHeight + 'px'; }
+          if (firstImg.complete) setInitialHeight();
+          else firstImg.addEventListener('load', setInitialHeight);
+          window.addEventListener('resize', function() { goTo(current); });
+        }
       });
     })();
   </script>
