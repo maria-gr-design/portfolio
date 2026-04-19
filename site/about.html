@@ -299,11 +299,17 @@
       cards.forEach(function(card) {
         card.addEventListener('mousemove', function(e) {
           tip.textContent = card.getAttribute('data-tip');
+          // Measure after setting text
           var tipW = tip.offsetWidth || 160;
+          var tipH = tip.offsetHeight || 28;
+          // Default: above and right of cursor
           var left = e.clientX + 14;
-          var top = e.clientY + 14;
+          var top = e.clientY - tipH - 10;
+          // Clamp horizontally
           if (left + tipW > window.innerWidth - 8) left = e.clientX - tipW - 8;
-          if (top + 30 > window.innerHeight - 8) top = e.clientY - 36;
+          if (left < 8) left = 8;
+          // If too close to top, flip below cursor
+          if (top < 8) top = e.clientY + 14;
           tip.style.left = left + 'px';
           tip.style.top = top + 'px';
           tip.classList.add('visible');
