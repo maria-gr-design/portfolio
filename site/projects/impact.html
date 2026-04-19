@@ -124,24 +124,28 @@
   <!-- Infographic images — mobile carousel -->
   <div class="container infographics-mobile">
     <div class="carousel infographic-carousel" id="infographicsMobileCarousel">
-      <div class="carousel-viewport" style="position:relative;">
-        <button class="carousel-prev infographic-arrow infographic-arrow--left" aria-label="Previous">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
-        </button>
+      <div class="carousel-viewport">
         <div class="carousel-track">
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-1.png" alt="Infographic 1" loading="lazy"></div>
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-2.png" alt="Infographic 2" loading="lazy"></div>
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-3.png" alt="Infographic 3" loading="lazy"></div>
         </div>
-        <button class="carousel-next infographic-arrow infographic-arrow--right" aria-label="Next">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
-        </button>
       </div>
-      <div class="carousel-nav" style="justify-content:center; margin-top:12px;">
+      <div class="carousel-nav">
+        <button class="carousel-prev" aria-label="Previous"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg></button>
         <span class="carousel-counter">1 / 3</span>
+        <button class="carousel-next" aria-label="Next"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg></button>
       </div>
     </div>
   </div>
+
+  <!-- Fixed floating arrows for infographic carousel (mobile) -->
+  <button class="infographic-fixed-arrow infographic-fixed-arrow--left" id="infographicPrev" aria-label="Previous infographic">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
+  </button>
+  <button class="infographic-fixed-arrow infographic-fixed-arrow--right" id="infographicNext" aria-label="Next infographic">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
+  </button>
 
 
   <!-- Marketing Assets -->
@@ -235,6 +239,30 @@
   </button>
 
   <script>
+    // ——— Infographic fixed floating arrows ———
+    (function() {
+      var carousel = document.getElementById('infographicsMobileCarousel');
+      var prevBtn = document.getElementById('infographicPrev');
+      var nextBtn = document.getElementById('infographicNext');
+      if (!carousel || !prevBtn || !nextBtn) return;
+
+      // Wire to carousel's own buttons
+      var carouselPrev = carousel.querySelector('.carousel-prev');
+      var carouselNext = carousel.querySelector('.carousel-next');
+      prevBtn.addEventListener('click', function() { if (carouselPrev) carouselPrev.click(); });
+      nextBtn.addEventListener('click', function() { if (carouselNext) carouselNext.click(); });
+
+      // Show when carousel is in viewport
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          var visible = entries[0].isIntersecting;
+          prevBtn.classList.toggle('visible', visible);
+          nextBtn.classList.toggle('visible', visible);
+        }, { threshold: 0.1 });
+        observer.observe(carousel);
+      }
+    })();
+
     // ——— Go to top ———
     (function() {
       var btn = document.getElementById('toTop');
