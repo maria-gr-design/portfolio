@@ -126,9 +126,9 @@
     <div class="carousel infographic-carousel" id="infographicsMobileCarousel">
       <div class="carousel-viewport">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="../assets/images/impact-infographic-1.png" alt="Infographic 1" loading="lazy"></div>
-          <div class="carousel-slide"><img src="../assets/images/impact-infographic-2.png" alt="Infographic 2" loading="lazy"></div>
-          <div class="carousel-slide"><img src="../assets/images/impact-infographic-3.png" alt="Infographic 3" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/impact-infographic-1-mobile.jpg" alt="Infographic 1" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/impact-infographic-2-mobile.jpg" alt="Infographic 2" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/impact-infographic-3-mobile.jpg" alt="Infographic 3" loading="lazy"></div>
         </div>
       </div>
       <div class="carousel-nav">
@@ -254,12 +254,13 @@
 
       // Show when carousel is in viewport
       if ('IntersectionObserver' in window) {
+        var carouselVp = carousel.querySelector('.carousel-viewport');
         var observer = new IntersectionObserver(function(entries) {
           var visible = entries[0].isIntersecting;
           prevBtn.classList.toggle('visible', visible);
           nextBtn.classList.toggle('visible', visible);
         }, { threshold: 0 });
-        observer.observe(carousel);
+        observer.observe(carouselVp || carousel);
       }
     })();
 
