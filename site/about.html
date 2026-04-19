@@ -299,8 +299,13 @@
       cards.forEach(function(card) {
         card.addEventListener('mousemove', function(e) {
           tip.textContent = card.getAttribute('data-tip');
-          tip.style.left = (e.clientX + 14) + 'px';
-          tip.style.top = (e.clientY + 14) + 'px';
+          var tipW = tip.offsetWidth || 160;
+          var left = e.clientX + 14;
+          var top = e.clientY + 14;
+          if (left + tipW > window.innerWidth - 8) left = e.clientX - tipW - 8;
+          if (top + 30 > window.innerHeight - 8) top = e.clientY - 36;
+          tip.style.left = left + 'px';
+          tip.style.top = top + 'px';
           tip.classList.add('visible');
         });
         card.addEventListener('mouseleave', function() {

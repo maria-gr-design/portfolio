@@ -123,18 +123,22 @@
 
   <!-- Infographic images — mobile carousel -->
   <div class="container infographics-mobile">
-    <div class="carousel" id="infographicsMobileCarousel">
-      <div class="carousel-viewport">
+    <div class="carousel infographic-carousel" id="infographicsMobileCarousel">
+      <div class="carousel-viewport" style="position:relative;">
+        <button class="carousel-prev infographic-arrow infographic-arrow--left" aria-label="Previous">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg>
+        </button>
         <div class="carousel-track">
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-1.png" alt="Infographic 1" loading="lazy"></div>
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-2.png" alt="Infographic 2" loading="lazy"></div>
           <div class="carousel-slide"><img src="../assets/images/impact-infographic-3.png" alt="Infographic 3" loading="lazy"></div>
         </div>
+        <button class="carousel-next infographic-arrow infographic-arrow--right" aria-label="Next">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg>
+        </button>
       </div>
-      <div class="carousel-nav">
-        <button class="carousel-prev" aria-label="Previous"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,2 4,7 9,12"/></svg></button>
+      <div class="carousel-nav" style="justify-content:center; margin-top:12px;">
         <span class="carousel-counter">1 / 3</span>
-        <button class="carousel-next" aria-label="Next"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="5,2 10,7 5,12"/></svg></button>
       </div>
     </div>
   </div>

@@ -239,15 +239,23 @@
 
       // Touch: tap to show tooltip briefly
       if ('ontouchstart' in window) {
+        var tapTimer = null;
         grid.addEventListener('touchstart', function(e) {
           var item = e.target.closest('.badge-item');
           if (!item) return;
+          if (tapTimer) clearTimeout(tapTimer);
+          tooltip.classList.remove('visible');
           tooltip.textContent = item.getAttribute('data-name');
           var rect = item.getBoundingClientRect();
-          tooltip.style.left = (rect.left + rect.width / 2) + 'px';
-          tooltip.style.top = (rect.top - 36) + 'px';
+          var tipW = tooltip.offsetWidth || 140;
+          var left = rect.left + rect.width / 2 - tipW / 2;
+          left = Math.max(8, Math.min(left, window.innerWidth - tipW - 8));
+          var top = rect.top - 40;
+          if (top < 8) top = rect.bottom + 8;
+          tooltip.style.left = left + 'px';
+          tooltip.style.top = top + 'px';
           tooltip.classList.add('visible');
-          setTimeout(function() { tooltip.classList.remove('visible'); }, 1800);
+          tapTimer = setTimeout(function() { tooltip.classList.remove('visible'); }, 5000);
         }, { passive: true });
       }
     })();

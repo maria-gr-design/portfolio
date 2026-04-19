@@ -711,6 +711,29 @@ a { color: inherit; text-decoration: none; }
 .infographics-mobile { display: none; }
 .infographics-desktop { display: flex; }
 
+/* Floating arrows for infographic carousel */
+.infographic-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.infographic-arrow:hover { background: #fff; }
+.infographic-arrow--left { left: 8px; }
+.infographic-arrow--right { right: 8px; }
+
 /* ——— Project section text ——— */
 .section-title {
   font-family: var(--display); font-size: clamp(17px, 1.4vw, 20px); font-weight: 600;
