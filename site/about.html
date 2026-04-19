@@ -297,22 +297,17 @@
       if (!tip) return;
       var cards = document.querySelectorAll('.about-photo[data-tip]');
       cards.forEach(function(card) {
-        card.addEventListener('mousemove', function(e) {
+        card.addEventListener('mouseenter', function() {
           tip.textContent = card.getAttribute('data-tip');
-          // Measure after setting text
+          tip.style.left = '-9999px';
+          tip.classList.add('visible');
           var tipW = tip.offsetWidth || 160;
-          var tipH = tip.offsetHeight || 28;
-          // Default: above and right of cursor
-          var left = e.clientX + 14;
-          var top = e.clientY - tipH - 10;
-          // Clamp horizontally
-          if (left + tipW > window.innerWidth - 8) left = e.clientX - tipW - 8;
-          if (left < 8) left = 8;
-          // If too close to top, flip below cursor
-          if (top < 8) top = e.clientY + 14;
+          var rect = card.getBoundingClientRect();
+          var left = rect.left + rect.width / 2 - tipW / 2;
+          left = Math.max(8, Math.min(left, window.innerWidth - tipW - 8));
+          var top = rect.bottom - 32;
           tip.style.left = left + 'px';
           tip.style.top = top + 'px';
-          tip.classList.add('visible');
         });
         card.addEventListener('mouseleave', function() {
           tip.classList.remove('visible');
