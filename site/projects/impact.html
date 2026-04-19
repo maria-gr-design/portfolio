@@ -258,7 +258,7 @@
           var visible = entries[0].isIntersecting;
           prevBtn.classList.toggle('visible', visible);
           nextBtn.classList.toggle('visible', visible);
-        }, { threshold: 0.1 });
+        }, { threshold: 0 });
         observer.observe(carousel);
       }
     })();
