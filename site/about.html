@@ -183,7 +183,7 @@
     @media (max-width: 860px) {
       .about-wrap {
         flex-direction: column;
-        padding: 60px 24px 0;
+        padding: 60px 24px 80px;
         gap: 48px;
         align-items: flex-start;
       }
@@ -257,6 +257,23 @@
     </div>
   </main>
 
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <span class="footer-label">Contact</span>
+      <div class="footer-bottom">
+        <span class="footer-location">Based in Greece. Working remotely.</span>
+        <div class="footer-links-col">
+          <a href="mailto:maria.gratsia@gmail.com" class="footer-link">
+            Email <span class="arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/mariagratsia" target="_blank" rel="noopener noreferrer" class="footer-link">
+            LinkedIn <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <div class="photo-tip" id="photoTip"></div>
 
   <script>
@@ -312,6 +329,11 @@
           tip.classList.remove('visible');
         });
       });
+
+      // Hide on scroll
+      window.addEventListener('scroll', function() {
+        tip.classList.remove('visible');
+      }, { passive: true });
     })();
 
     // ——— Mobile: tap to toggle colour ———
