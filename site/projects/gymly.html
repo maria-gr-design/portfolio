@@ -9,6 +9,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
   <link href="../assets/styles.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    .gymly-strip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      overflow-x: auto;
+      overflow-y: visible;
+      /* Left: align with container text (48px padding, centred at 800px max) */
+      padding-left: max(48px, calc((100vw - 800px) / 2 + 48px));
+      /* Right: last image stops at container right edge */
+      padding-right: max(48px, calc((100vw - 800px) / 2 + 48px));
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: max(48px, calc((100vw - 800px) / 2 + 48px));
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-top: 32px;
+    }
+    .gymly-strip::-webkit-scrollbar { display: none; }
+    .gymly-strip img {
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 8px;
+      scroll-snap-align: start;
+      display: block;
+    }
+    /* Strip 1: screens 1–5, phone = 161px display */
+    .gymly-strip--1 img:nth-child(1) { width: 286px; } /* Dashboard   666px */
+    .gymly-strip--1 img:nth-child(2) { width: 270px; } /* Schedule    628px */
+    .gymly-strip--1 img:nth-child(3) { width: 346px; } /* My Activity 808px */
+    .gymly-strip--1 img:nth-child(4) { width: 302px; } /* Community   705px */
+    .gymly-strip--1 img:nth-child(5) { width: 292px; } /* Check-in    679px */
+    /* Strip 2: screens 6–10, same phone display width */
+    .gymly-strip--2 img:nth-child(1) { width: 412px; } /* Book        958px */
+    .gymly-strip--2 img:nth-child(2) { width: 399px; } /* Invite      928px */
+    .gymly-strip--2 img:nth-child(3) { width: 331px; } /* Waitlist    768px */
+    .gymly-strip--2 img:nth-child(4) { width: 290px; } /* Story       674px */
+    .gymly-strip--2 img:nth-child(5) { width: 428px; } /* Trainer     995px */
+  </style>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HGBYF05XG"></script>
@@ -88,23 +126,32 @@
       <h4 class="section-title">Goal</h4>
       <p class="section-text">Design an app that enables as many gym members as possible to be active, go to the gym, and engage more with the activities.</p>
     </div>
+  </div>
 
+  <div class="gymly-strip gymly-strip--1">
+    <img src="../assets/images/gymly-screen-1-dashboard.png" alt="Dashboard screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-2-schedule.png" alt="Schedule screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-3-my-activity.png" alt="My Activity screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-4-community.png" alt="Community screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-5-ckeck-in.png" alt="Check-in screen" loading="lazy">
+  </div>
 
-    <div class="section-block">
+  <div class="container">
+    <div class="section-block section-block--double-top">
       <h4 class="section-title">Approach</h4>
-      <p class="section-text">
-        I focused on three pilars to support early engagement and retention.
-        <li><b>Early value access:</b> Core features accessible before full onboarding completion to reduce friction.</li>
-        <li><b>Progress visibility:</b> Activity and progress feedback surfaced early to reinforce motivation.</li>
-        <li><b>Social engagement:</b> Features like class invitations, friend group participation, waitlists, and favorite trainers to support retention
-through social visibility.</p></li>
+      <p class="section-text">I focused on three pillars to support early engagement and retention.</p>
+        <li class="section-text"><b>Early value:</b> Key information surfaced before onboarding is complete. learn about classes and trainers, and get immediate access before onboarding.</li>
+        <li class="section-text"><b>Actions & feedback:</b> Easy access to schedule, class booking and cancellation, and activity-based stats that give members a clear picture of their progress.</li>
+        <li class="section-text"><b>Social engagement:</b> See which friends are attending classes, invite them, and follow your favourite trainers. Consistency feels less like a solo effort.</li>
     </div>
   </div>
 
-    <div class="container-wide">
-    <div class="img-full">
-      <img src="../assets/images/gymly-screens-1.png" alt="App screens" loading="lazy">
-    </div>
+  <div class="gymly-strip gymly-strip--2">
+    <img src="../assets/images/gymly-screen-6-book.png" alt="Book screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-7-invite.png" alt="Invite screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-8-waitlist.png" alt="Waitlist screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-9-story.png" alt="Story screen" loading="lazy">
+    <img src="../assets/images/gymly-screen-10-trainer.png" alt="Trainer screen" loading="lazy">
   </div>
 
 
@@ -120,6 +167,10 @@ through social visibility.</p></li>
         <li>Goal setting and gamification features are not explored in depth in this version and didn't grab users' attention enough.</li>
       </ul>
     </div>
+  </div>
+
+  <div class="container-wide" style="margin-top: 48px;">
+    <img src="../assets/images/gymly-app-screens.png" alt="Gymly app screens" style="width: 100%; height: auto; display: block; border-radius: 12px;">
   </div>
 
     <!-- EDIT: next project link -->
