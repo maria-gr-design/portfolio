@@ -168,11 +168,42 @@
     </div>
   </div>
 
+  <!-- In Motion -->
+  <div class="container">
+    <div class="section-block">
+      <h4 class="section-title">In Motion</h4>
+      <p class="section-text">I wanted to explore how the campaign material would translate into motion. I created a video prompt and ran it through two models, Kling 3.0 and Veo 3.1, to see how each interprets the same brief.</p>
+    </div>
+  </div>
+
+  <div class="container-wide">
+    <div class="photo-row" style="align-items: flex-start;">
+      <div class="cell" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+        <div style="position: relative;">
+          <video id="desir-video-1" src="../assets/images/desir-clip-1-kling3.mp4" autoplay muted playsinline style="width: 100%; border-radius: 8px; display: block;"></video>
+          <button class="desir-replay" data-video="desir-video-1" aria-label="Replay" style="display:none; position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7a5 5 0 1 0 1.5-3.5"/><polyline points="2,2 2,5.5 5.5,5.5"/></svg>
+          </button>
+        </div>
+        <span style="font-size: 12px; color: var(--text-secondary); font-family: var(--font);">Kling 3.0</span>
+      </div>
+      <div class="cell" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+        <div style="position: relative;">
+          <video id="desir-video-2" src="../assets/images/desir-clip-3-veo3.1.mp4" autoplay muted playsinline style="width: 100%; border-radius: 8px; display: block;"></video>
+          <button class="desir-replay" data-video="desir-video-2" aria-label="Replay" style="display:none; position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); color: #fff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7a5 5 0 1 0 1.5-3.5"/><polyline points="2,2 2,5.5 5.5,5.5"/></svg>
+          </button>
+        </div>
+        <span style="font-size: 12px; color: var(--text-secondary); font-family: var(--font);">Veo 3.1</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Results -->
   <div class="container">
     <div class="section-block">
       <h4 class="section-title">Outcome</h4>
-      <p class="section-text">A set of campaign-ready images across formats with a consistent visual approach and no post-production. Scalable results are possible, but require careful direction, intentional prompting, and patience with failure. Some results still have imperfections that would need further iteration.</p>
+      <p class="section-text">A set of campaign-ready assets across formats with a consistent visual approach and no post-production. Scalable results are possible, but require careful direction, intentional prompting, and patience with failure. Some results still have imperfections that would need further iteration.</p>
     </div>
   </div>
 
@@ -210,6 +241,23 @@
   </button>
 
   <script>
+    // ——— Desir videos: autoplay once, then show replay button ———
+    (function() {
+      document.querySelectorAll('.desir-replay').forEach(function(btn) {
+        var video = document.getElementById(btn.getAttribute('data-video'));
+        if (!video) return;
+        video.addEventListener('ended', function() {
+          btn.style.display = 'flex';
+        });
+        btn.addEventListener('click', function() {
+          btn.style.display = 'none';
+          video.currentTime = 0;
+          video.play();
+        });
+      });
+    })();
+
+    // ——— Go to top ———
     (function() {
       var btn = document.getElementById('toTop');
       var onScroll = function() {
